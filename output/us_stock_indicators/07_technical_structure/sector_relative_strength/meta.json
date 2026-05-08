@@ -1,0 +1,25 @@
+{
+  "category": "技术面与市场结构",
+  "category_slug": "technical_structure",
+  "indicator_name": "板块轮动（相对强弱 RS）",
+  "indicator_slug": "sector_relative_strength",
+  "representative_of_category": false,
+  "importance": "4/5",
+  "publicity": "中高",
+  "reason": "识别 risk-on / risk-off 风格切换",
+  "details": {
+    "公开性": "中高，ETF 相对收益即可计算。",
+    "计算逻辑": "用行业 ETF 或板块指数相对标普 500 的超额收益评估强弱顺序。",
+    "代表含义": "识别市场偏好防御、周期、科技还是价值。",
+    "如何影响美股": "防御板块走强通常说明市场风险偏好回落；周期和半导体领涨则通常代表增长预期改善。",
+    "参考值": "更看轮动方向而非绝对阈值；若公用事业、必需消费持续领跑，通常要警惕 risk-off。",
+    "重要性": "4/5，对风格判断非常有效。"
+  },
+  "source": "AKShare",
+  "status": "fetched",
+  "proxy": false,
+  "note": "",
+  "data_path": "/Users/bytedance/Documents/trae_projects/american/output/us_stock_indicators/07_technical_structure/sector_relative_strength/data.csv",
+  "chart_path": "/Users/bytedance/Documents/trae_projects/american/output/us_stock_indicators/07_technical_structure/sector_relative_strength/chart.png",
+  "error": ""
+}

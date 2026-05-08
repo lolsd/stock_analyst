@@ -1,0 +1,25 @@
+{
+  "category": "风险偏好与压力指标",
+  "category_slug": "risk_stress",
+  "indicator_name": "美元指数（DXY）",
+  "indicator_slug": "dxy",
+  "representative_of_category": false,
+  "importance": "4/5",
+  "publicity": "高",
+  "reason": "强美元常伴随全球风险资产承压",
+  "details": {
+    "公开性": "高，交易所和主流网站均可获取。",
+    "计算逻辑": "衡量美元相对一篮子主要货币的强弱，欧元权重最高。",
+    "代表含义": "代表全球美元流动性与避险偏好。",
+    "如何影响美股": "美元走强通常压制大宗商品、新兴市场和跨国企业海外收入折算；美元回落通常有利于全球风险资产。",
+    "参考值": "95 到 103 大致常见；快速升破 105 需关注全球流动性压力；明显跌破 100 通常利好风险资产。",
+    "重要性": "4/5，是全球资金环境的高频代理变量。"
+  },
+  "source": "Yahoo Finance",
+  "status": "fetched",
+  "proxy": false,
+  "note": "Uses `DX-Y.NYB` price history and falls back to cached indicator CSV when yfinance is rate limited.",
+  "data_path": "/Users/bytedance/Documents/trae_projects/american/output/us_stock_indicators/05_risk_stress/dxy/data.csv",
+  "chart_path": "/Users/bytedance/Documents/trae_projects/american/output/us_stock_indicators/05_risk_stress/dxy/chart.png",
+  "error": ""
+}

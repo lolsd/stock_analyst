@@ -1,0 +1,25 @@
+{
+  "category": "风险偏好与压力指标",
+  "category_slug": "risk_stress",
+  "indicator_name": "信用利差（IG / HY spread）",
+  "indicator_slug": "credit_spreads",
+  "representative_of_category": false,
+  "importance": "5/5",
+  "publicity": "高",
+  "reason": "比 VIX 更能反映真实信用风险",
+  "details": {
+    "公开性": "高，ICE BofA、FRED 等可获取。",
+    "计算逻辑": "企业债收益率减去同期限国债收益率，分投资级和高收益级别。",
+    "代表含义": "反映市场对违约风险和融资条件的定价。",
+    "如何影响美股": "信用利差走阔通常早于股市转弱，特别是 HY 利差更能反映真实风险偏好和融资压力。",
+    "参考值": "HY 利差 300 到 400bp 较温和；400 到 500bp 需关注；高于 500bp 通常进入明显风险厌恶区。",
+    "重要性": "5/5，对识别“股市表面平静、信用已恶化”很有效。"
+  },
+  "source": "FRED",
+  "status": "fetch_failed",
+  "proxy": false,
+  "note": "",
+  "data_path": "",
+  "chart_path": "",
+  "error": "HTTPSConnectionPool(host='fred.stlouisfed.org', port=443): Read timed out. (read timeout=20)"
+}

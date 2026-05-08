@@ -1,0 +1,25 @@
+{
+  "category": "资金流向与仓位",
+  "category_slug": "flows_positioning",
+  "indicator_name": "美股基金资金流（ICI / EPFR）",
+  "indicator_slug": "equity_fund_flows",
+  "representative_of_category": false,
+  "importance": "4/5",
+  "publicity": "中高",
+  "reason": "最直观的增量资金观察窗口",
+  "details": {
+    "公开性": "中高，ICI 部分官方公开，EPFR 常被媒体整理引用。",
+    "计算逻辑": "统计股票型基金和 ETF 的净申购、净赎回规模。",
+    "代表含义": "反映市场是否存在持续的增量资金流入。",
+    "如何影响美股": "持续净流入通常能强化上涨趋势；持续净流出即使基本面不差，也会压制指数表现。",
+    "参考值": "更看连续性而非单周数据；连续数周大额净流入偏积极；大额净流出需警惕风格反转或拥挤松动。",
+    "重要性": "4/5，是资金面类别最具代表性的指标。"
+  },
+  "source": "Manual",
+  "status": "pending_manual",
+  "proxy": false,
+  "note": "EPFR/ICI feed not wired.",
+  "data_path": "",
+  "chart_path": "",
+  "error": ""
+}

@@ -1,0 +1,25 @@
+{
+  "category": "技术面与市场结构",
+  "category_slug": "technical_structure",
+  "indicator_name": "200 日 / 50 日均线位置",
+  "indicator_slug": "spy_trend_ma",
+  "representative_of_category": true,
+  "importance": "4/5",
+  "publicity": "高",
+  "reason": "最直观的趋势过滤器",
+  "details": {
+    "公开性": "高，任何行情软件都可计算。",
+    "计算逻辑": "对过去 50 日和 200 日收盘价求简单移动平均，观察价格是否站上均线及短期均线是否高于长期均线。",
+    "代表含义": "反映中长期趋势方向。",
+    "如何影响美股": "指数站稳 200MA 通常意味着趋势修复；跌破 200MA 常导致系统性风险偏好下降；50MA 上穿 200MA 有助于强化多头情绪。",
+    "参考值": "价格在 200MA 上方属强势；反复跌破说明趋势不稳；短期均线和长期均线金叉 / 死叉仅作辅助。",
+    "重要性": "4/5，是技术分析中最具代表性的指标。"
+  },
+  "source": "existing csv / AKShare",
+  "status": "fetched",
+  "proxy": false,
+  "note": "",
+  "data_path": "/Users/bytedance/Documents/trae_projects/american/output/us_stock_indicators/07_technical_structure/spy_trend_ma/data.csv",
+  "chart_path": "/Users/bytedance/Documents/trae_projects/american/output/us_stock_indicators/07_technical_structure/spy_trend_ma/chart.png",
+  "error": ""
+}

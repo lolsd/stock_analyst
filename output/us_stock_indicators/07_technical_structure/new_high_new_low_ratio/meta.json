@@ -1,0 +1,25 @@
+{
+  "category": "技术面与市场结构",
+  "category_slug": "technical_structure",
+  "indicator_name": "52 周新高 vs 新低比率",
+  "indicator_slug": "new_high_new_low_ratio",
+  "representative_of_category": false,
+  "importance": "4/5",
+  "publicity": "高",
+  "reason": "识别趋势质量和内部背离",
+  "details": {
+    "公开性": "高，市场数据公开。",
+    "计算逻辑": "统计创 52 周新高和新低的股票数量并计算比率或净差值。",
+    "代表含义": "反映趋势是否健康扩散。",
+    "如何影响美股": "新高家数扩大代表强势扩散；新低家数居高不下说明内部仍有较强卖压。",
+    "参考值": "新高显著多于新低偏健康；新低持续压过新高需警惕下跌未结束；极端分化时要关注指数背离。",
+    "重要性": "4/5，适合用来确认趋势质量。"
+  },
+  "source": "Manual",
+  "status": "pending_manual",
+  "proxy": false,
+  "note": "Breadth universe feed not wired.",
+  "data_path": "",
+  "chart_path": "",
+  "error": ""
+}

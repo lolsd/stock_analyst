@@ -1,0 +1,25 @@
+{
+  "category": "市场情绪与调查",
+  "category_slug": "sentiment_surveys",
+  "indicator_name": "NAAIM 主动股票仓位",
+  "indicator_slug": "naaim_exposure",
+  "representative_of_category": false,
+  "importance": "4/5",
+  "publicity": "高",
+  "reason": "机构风险暴露的重要参考",
+  "details": {
+    "公开性": "高，NAAIM 周度发布。",
+    "计算逻辑": "调查主动管理人当前股票净敞口，从大幅低配到高杠杆多头。",
+    "代表含义": "比散户情绪更贴近机构实际仓位。",
+    "如何影响美股": "低仓位意味着未来若风险偏好修复，存在回补空间；高仓位则意味着新增买盘可能有限。",
+    "参考值": "接近 20 以下偏谨慎；60 到 80 为中性偏积极；接近或高于 100 说明仓位较满。",
+    "重要性": "4/5，是机构情绪和仓位的高质量代理变量。"
+  },
+  "source": "Manual",
+  "status": "pending_manual",
+  "proxy": false,
+  "note": "NAAIM parser not wired.",
+  "data_path": "",
+  "chart_path": "",
+  "error": ""
+}

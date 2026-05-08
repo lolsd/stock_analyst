@@ -1,0 +1,25 @@
+{
+  "category": "货币流动性",
+  "category_slug": "money_liquidity",
+  "indicator_name": "美联储资产负债表规模",
+  "indicator_slug": "fed_balance_sheet",
+  "representative_of_category": false,
+  "importance": "5/5",
+  "publicity": "高",
+  "reason": "直接反映 QE/QT 对流动性的注入与回收",
+  "details": {
+    "公开性": "高，Fed H.4.1 周报公开。",
+    "计算逻辑": "统计 Fed 持有国债、MBS、流动性工具等资产规模，扩表代表央行向体系提供基础货币，缩表代表回收。",
+    "代表含义": "代表中央银行对系统流动性的直接投放力度。",
+    "如何影响美股": "扩表通常压低期限溢价、抬升风险偏好；缩表通常令长端利率和流动性折价上升，压制估值。",
+    "参考值": "绝对水平不如趋势重要；连续 3 到 6 个月扩表偏利多；连续缩表且速度快，需要关注成长股和高杠杆资产。",
+    "重要性": "5/5，是仅次于政策利率的流动性主驱动。"
+  },
+  "source": "FRED",
+  "status": "fetch_failed",
+  "proxy": false,
+  "note": "",
+  "data_path": "",
+  "chart_path": "",
+  "error": "HTTPSConnectionPool(host='fred.stlouisfed.org', port=443): Read timed out. (read timeout=20)"
+}

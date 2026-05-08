@@ -1,0 +1,25 @@
+{
+  "category": "技术面与市场结构",
+  "category_slug": "technical_structure",
+  "indicator_name": "量价关系（成交量验证）",
+  "indicator_slug": "price_volume_confirmation",
+  "representative_of_category": false,
+  "importance": "3/5",
+  "publicity": "高",
+  "reason": "判断突破是否有效",
+  "details": {
+    "公开性": "高，行情数据可直接获取。",
+    "计算逻辑": "观察价格突破、回调时成交量是否同步放大或萎缩。",
+    "代表含义": "衡量价格变化是否得到真实资金参与验证。",
+    "如何影响美股": "放量上涨的突破更可靠；缩量反弹容易失败；放量下跌通常意味着主动卖压增强。",
+    "参考值": "突破时量能高于过去 20 日均量更可信；量价背离持续出现时要谨慎追涨。",
+    "重要性": "3/5，属于确认型指标，不宜单独使用。"
+  },
+  "source": "AKShare",
+  "status": "fetched",
+  "proxy": false,
+  "note": "",
+  "data_path": "/Users/bytedance/Documents/trae_projects/american/output/us_stock_indicators/07_technical_structure/price_volume_confirmation/data.csv",
+  "chart_path": "/Users/bytedance/Documents/trae_projects/american/output/us_stock_indicators/07_technical_structure/price_volume_confirmation/chart.png",
+  "error": ""
+}

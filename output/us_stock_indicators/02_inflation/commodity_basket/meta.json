@@ -1,0 +1,25 @@
+{
+  "category": "通胀",
+  "category_slug": "inflation",
+  "indicator_name": "大宗商品价格（油、铜、农产品）",
+  "indicator_slug": "commodity_basket",
+  "representative_of_category": false,
+  "importance": "3/5",
+  "publicity": "高",
+  "reason": "通胀上游冲击源头",
+  "details": {
+    "公开性": "高，期货和现货指数广泛公开。",
+    "计算逻辑": "跟踪原油、铜、农产品等关键大宗商品价格变化，可单看，也可看商品篮子。",
+    "代表含义": "反映供给冲击、全球需求和上游成本压力。",
+    "如何影响美股": "油价大涨会推升通胀预期并压缩居民实际购买力；铜价和工业品回升则常伴随全球制造周期改善。",
+    "参考值": "该指标更重趋势而非固定阈值；1 到 3 个月内上涨过快需要警惕通胀再抬头；同步走弱则偏向需求降温。",
+    "重要性": "3/5，更适合作为通胀与增长的交叉验证指标。"
+  },
+  "source": "AKShare / commodity_macro cache",
+  "status": "fetched",
+  "proxy": false,
+  "note": "Uses `output/commodity_macro` cached futures CSVs when available, otherwise fetches via AKShare futures history.",
+  "data_path": "/Users/bytedance/Documents/trae_projects/american/output/us_stock_indicators/02_inflation/commodity_basket/data.csv",
+  "chart_path": "/Users/bytedance/Documents/trae_projects/american/output/us_stock_indicators/02_inflation/commodity_basket/chart.png",
+  "error": ""
+}

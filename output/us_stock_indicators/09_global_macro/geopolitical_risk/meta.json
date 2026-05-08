@@ -1,0 +1,25 @@
+{
+  "category": "全球宏观与地缘",
+  "category_slug": "global_macro",
+  "indicator_name": "地缘风险事件",
+  "indicator_slug": "geopolitical_risk",
+  "representative_of_category": false,
+  "importance": "3/5",
+  "publicity": "中",
+  "reason": "短期冲击风险溢价的重要来源",
+  "details": {
+    "公开性": "中，事件本身公开，但量化口径不统一。",
+    "计算逻辑": "可通过地缘风险指数、新闻事件统计、能源和运费市场反应等方式跟踪。",
+    "代表含义": "反映战争、制裁、航运扰动、能源冲击等非经济变量带来的风险溢价。",
+    "如何影响美股": "通常先冲击油价、国防、航运、避险资产和波动率，再通过通胀和信用渠道影响大盘。",
+    "参考值": "不看固定阈值，更关注事件是否升级、持续时间是否超预期，以及是否引发二次金融传导。",
+    "重要性": "3/5，适合事件驱动监控。"
+  },
+  "source": "Manual",
+  "status": "pending_manual",
+  "proxy": false,
+  "note": "Event-driven feed not wired.",
+  "data_path": "",
+  "chart_path": "",
+  "error": ""
+}

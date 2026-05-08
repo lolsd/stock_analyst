@@ -1,0 +1,25 @@
+{
+  "category": "通胀",
+  "category_slug": "inflation",
+  "indicator_name": "通胀预期（5Y5Y / 密歇根）",
+  "indicator_slug": "inflation_expectations",
+  "representative_of_category": false,
+  "importance": "4/5",
+  "publicity": "中高",
+  "reason": "决定 Fed 是否容忍短期波动",
+  "details": {
+    "公开性": "中高，市场数据和调查数据均可获取。",
+    "计算逻辑": "5Y5Y 通胀互换或盈亏平衡通胀率反映市场对未来 5 年之后 5 年的平均通胀预期；密歇根调查反映居民主观预期。",
+    "代表含义": "衡量通胀是否“脱锚”。",
+    "如何影响美股": "如果预期稳定，即使单月通胀波动，Fed 也可能保持耐心；若预期失控，市场会迅速计入更鹰的政策路径。",
+    "参考值": "长期维持在 2% 到 2.5% 较健康；显著高于 2.75% 需要关注；若快速下行到 2% 以下，也可能反映增长担忧。",
+    "重要性": "4/5，决定政策容忍度。"
+  },
+  "source": "FRED",
+  "status": "fetch_failed",
+  "proxy": false,
+  "note": "",
+  "data_path": "",
+  "chart_path": "",
+  "error": "HTTPSConnectionPool(host='fred.stlouisfed.org', port=443): Read timed out. (read timeout=20)"
+}

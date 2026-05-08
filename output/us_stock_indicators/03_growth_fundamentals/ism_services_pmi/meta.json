@@ -1,0 +1,25 @@
+{
+  "category": "经济增长 / 基本面",
+  "category_slug": "growth_fundamentals",
+  "indicator_name": "ISM 服务业 PMI",
+  "indicator_slug": "ism_services_pmi",
+  "representative_of_category": false,
+  "importance": "4/5",
+  "publicity": "高",
+  "reason": "更贴近美国主导产业结构",
+  "details": {
+    "公开性": "高，ISM 每月发布。",
+    "计算逻辑": "基于新订单、商业活动、就业、供应商交付等分项构成扩散指数，50 为荣枯线。",
+    "代表含义": "美国服务业占经济主体，因此该指标更能代表美国内生增长。",
+    "如何影响美股": "高于 50 且上升，利好周期和盈利预期；过热时也可能抬升长端利率；跌破 50 且持续，通常预示盈利下修。",
+    "参考值": "50 到 55 为温和扩张；55 以上偏强；低于 50 需关注增长放缓。",
+    "重要性": "4/5，是美国增长数据中领先性和代表性都很强的指标。"
+  },
+  "source": "AKShare",
+  "status": "fetched",
+  "proxy": false,
+  "note": "",
+  "data_path": "/Users/bytedance/Documents/trae_projects/american/output/us_stock_indicators/03_growth_fundamentals/ism_services_pmi/data.csv",
+  "chart_path": "/Users/bytedance/Documents/trae_projects/american/output/us_stock_indicators/03_growth_fundamentals/ism_services_pmi/chart.png",
+  "error": ""
+}

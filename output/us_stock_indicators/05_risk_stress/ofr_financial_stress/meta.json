@@ -1,0 +1,25 @@
+{
+  "category": "风险偏好与压力指标",
+  "category_slug": "risk_stress",
+  "indicator_name": "OFR 金融压力指数",
+  "indicator_slug": "ofr_financial_stress",
+  "representative_of_category": false,
+  "importance": "3/5",
+  "publicity": "高",
+  "reason": "用于识别系统性风险积累",
+  "details": {
+    "公开性": "高，美国财政部 OFR 发布。",
+    "计算逻辑": "整合股票、利率、信用、融资和外汇市场多项压力变量形成综合指数。",
+    "代表含义": "识别系统性金融压力是否在快速累积。",
+    "如何影响美股": "指数明显走高时，市场对尾部风险定价会上升，通常不利于高杠杆和低流动性资产。",
+    "参考值": "长期均值附近属正常；明显高于均值并快速抬升需要关注；结合 VIX 和信用利差看更有效。",
+    "重要性": "3/5，适合做系统性风险的辅助监控。"
+  },
+  "source": "Manual",
+  "status": "pending_manual",
+  "proxy": false,
+  "note": "Official feed not wired yet.",
+  "data_path": "",
+  "chart_path": "",
+  "error": ""
+}

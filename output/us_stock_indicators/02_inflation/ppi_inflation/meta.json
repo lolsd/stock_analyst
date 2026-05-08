@@ -1,0 +1,25 @@
+{
+  "category": "通胀",
+  "category_slug": "inflation",
+  "indicator_name": "PPI（生产者价格指数）",
+  "indicator_slug": "ppi_inflation",
+  "representative_of_category": false,
+  "importance": "4/5",
+  "publicity": "高",
+  "reason": "上游价格向终端传导的重要前瞻指标",
+  "details": {
+    "公开性": "高，BLS 发布。",
+    "计算逻辑": "PPI 跟踪生产端和批发端价格变动，通常领先终端消费者价格。",
+    "代表含义": "反映企业成本端压力。",
+    "如何影响美股": "PPI 上升若不能转嫁，会压缩企业利润率；若上行持续，市场会担心 CPI 和核心通胀滞后抬升。",
+    "参考值": "接近或略高于 2% 较温和；高于 3% 且持续抬升要关注成本传导；快速转负则可能反映需求走弱。",
+    "重要性": "4/5，适合做 CPI 与利润率的先行验证。"
+  },
+  "source": "FRED",
+  "status": "fetched",
+  "proxy": false,
+  "note": "",
+  "data_path": "/Users/bytedance/Documents/trae_projects/american/output/us_stock_indicators/02_inflation/ppi_inflation/data.csv",
+  "chart_path": "/Users/bytedance/Documents/trae_projects/american/output/us_stock_indicators/02_inflation/ppi_inflation/chart.png",
+  "error": ""
+}

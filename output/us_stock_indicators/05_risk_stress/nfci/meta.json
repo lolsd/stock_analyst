@@ -1,0 +1,25 @@
+{
+  "category": "风险偏好与压力指标",
+  "category_slug": "risk_stress",
+  "indicator_name": "芝加哥联储 NFCI",
+  "indicator_slug": "nfci",
+  "representative_of_category": false,
+  "importance": "4/5",
+  "publicity": "高",
+  "reason": "综合金融条件指标，实用性强",
+  "details": {
+    "公开性": "高，芝加哥联储发布。",
+    "计算逻辑": "综合货币市场、债券市场、股票市场以及影子银行等多个变量构成金融条件指数。",
+    "代表含义": "衡量金融体系整体“松还是紧”。",
+    "如何影响美股": "金融条件越紧，融资越贵、估值越难扩张；条件放松则通常支持信用扩张和股市上行。",
+    "参考值": "0 附近为历史平均；低于 0 偏宽松；高于 0 偏收紧；高于 0.5 需提高警惕。",
+    "重要性": "4/5，是综合风险环境的高质量验证指标。"
+  },
+  "source": "FRED",
+  "status": "fetch_failed",
+  "proxy": false,
+  "note": "",
+  "data_path": "",
+  "chart_path": "",
+  "error": "HTTPSConnectionPool(host='fred.stlouisfed.org', port=443): Read timed out. (read timeout=20)"
+}

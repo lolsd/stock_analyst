@@ -1,0 +1,25 @@
+{
+  "category": "市场情绪与调查",
+  "category_slug": "sentiment_surveys",
+  "indicator_name": "CNN 恐惧贪婪指数",
+  "indicator_slug": "fear_greed_index",
+  "representative_of_category": false,
+  "importance": "3/5",
+  "publicity": "高",
+  "reason": "适合做多维情绪汇总观察",
+  "details": {
+    "公开性": "高，媒体公开。",
+    "计算逻辑": "综合动量、波动率、期权、垃圾债需求、避险需求、市场广度等多个子项形成 0 到 100 的情绪分数。",
+    "代表含义": "把多维市场情绪压缩成一个易读指标。",
+    "如何影响美股": "适合辅助判断市场是否处于过度乐观或过度恐慌，但不宜作为单一交易依据。",
+    "参考值": "25 以下偏恐惧；25 到 75 中性；75 以上偏贪婪；极端值更有逆向意义。",
+    "重要性": "3/5，适合做总览，不适合替代底层指标。"
+  },
+  "source": "Manual",
+  "status": "pending_manual",
+  "proxy": false,
+  "note": "CNN public endpoint not wired.",
+  "data_path": "",
+  "chart_path": "",
+  "error": ""
+}

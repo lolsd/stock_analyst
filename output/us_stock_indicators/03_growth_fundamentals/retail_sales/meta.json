@@ -1,0 +1,25 @@
+{
+  "category": "经济增长 / 基本面",
+  "category_slug": "growth_fundamentals",
+  "indicator_name": "零售销售额",
+  "indicator_slug": "retail_sales",
+  "representative_of_category": false,
+  "importance": "4/5",
+  "publicity": "高",
+  "reason": "直接跟踪美国消费强弱",
+  "details": {
+    "公开性": "高，美国商务部发布。",
+    "计算逻辑": "统计零售和餐饮销售额，核心零售剔除波动较大的汽车、汽油、建材等项目更适合跟踪真实消费。",
+    "代表含义": "直接观察居民消费动能。",
+    "如何影响美股": "消费强通常利好盈利预期，尤其是可选消费和支付链条；若零售显著走弱，市场会下调增长与盈利预期。",
+    "参考值": "环比 0% 到 0.5% 较平稳；连续负增长需要警惕消费降温；与通胀结合看真实零售更有效。",
+    "重要性": "4/5，是美国经济最重要组成部分的直接高频跟踪。"
+  },
+  "source": "FRED",
+  "status": "fetched",
+  "proxy": false,
+  "note": "",
+  "data_path": "/Users/bytedance/Documents/trae_projects/american/output/us_stock_indicators/03_growth_fundamentals/retail_sales/data.csv",
+  "chart_path": "/Users/bytedance/Documents/trae_projects/american/output/us_stock_indicators/03_growth_fundamentals/retail_sales/chart.png",
+  "error": ""
+}

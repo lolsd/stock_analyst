@@ -1,0 +1,25 @@
+{
+  "category": "通胀",
+  "category_slug": "inflation",
+  "indicator_name": "房租 OER",
+  "indicator_slug": "owner_equivalent_rent",
+  "representative_of_category": false,
+  "importance": "4/5",
+  "publicity": "高",
+  "reason": "美国核心通胀中最粘性的部分",
+  "details": {
+    "公开性": "高，BLS 在 CPI 细项中公布。",
+    "计算逻辑": "OER 是“业主等额租金”，即业主自有住房若出租可获得的隐含租金，是美国核心 CPI 的重要组成。",
+    "代表含义": "代表服务通胀中最粘、权重最大的部分。",
+    "如何影响美股": "OER 下行缓慢会拖住核心通胀回落速度，市场因此对降息预期更谨慎，压制估值修复速度。",
+    "参考值": "3% 左右较温和；4% 到 5% 表示粘性仍强；高于 5% 时核心通胀很难快速回到目标。",
+    "重要性": "4/5，是判断“通胀最后一公里”最关键的细项。"
+  },
+  "source": "FRED",
+  "status": "fetched",
+  "proxy": false,
+  "note": "",
+  "data_path": "/Users/bytedance/Documents/trae_projects/american/output/us_stock_indicators/02_inflation/owner_equivalent_rent/data.csv",
+  "chart_path": "/Users/bytedance/Documents/trae_projects/american/output/us_stock_indicators/02_inflation/owner_equivalent_rent/chart.png",
+  "error": ""
+}

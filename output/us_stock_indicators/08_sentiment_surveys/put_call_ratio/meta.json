@@ -1,0 +1,25 @@
+{
+  "category": "市场情绪与调查",
+  "category_slug": "sentiment_surveys",
+  "indicator_name": "Put/Call 比率",
+  "indicator_slug": "put_call_ratio",
+  "representative_of_category": true,
+  "importance": "4/5",
+  "publicity": "高",
+  "reason": "情绪极端时反向指示意义强",
+  "details": {
+    "公开性": "高，CBOE 等平台公开。",
+    "计算逻辑": "看跌期权成交量或持仓量除以看涨期权成交量或持仓量。",
+    "代表含义": "衡量市场更愿意买保护还是追逐上涨。",
+    "如何影响美股": "极低值说明过度乐观，极高值说明过度恐慌；通常具有逆向指标价值。",
+    "参考值": "0.7 到 1.0 较常见；低于 0.6 需警惕过热；高于 1.1 到 1.2 常对应恐慌阶段。",
+    "重要性": "4/5，是情绪类别最具代表性的高频指标。"
+  },
+  "source": "Manual",
+  "status": "pending_manual",
+  "proxy": false,
+  "note": "CBOE public feed not wired.",
+  "data_path": "",
+  "chart_path": "",
+  "error": ""
+}

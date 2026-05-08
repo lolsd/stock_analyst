@@ -1,0 +1,283 @@
+
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: var(--font-sans, sans-serif); }
+  .container { padding: 16px 0 24px; }
+  .section { margin-bottom: 20px; border-radius: var(--border-radius-lg, 12px); border: 0.5px solid var(--color-border-tertiary); overflow: hidden; }
+  .section-header { padding: 10px 16px; cursor: pointer; display: flex; align-items: center; justify-content: space-between; user-select: none; }
+  .section-header:hover { opacity: 0.85; }
+  .section-title { font-size: 14px; font-weight: 500; display: flex; align-items: center; gap: 8px; }
+  .badge { font-size: 11px; font-weight: 400; padding: 2px 8px; border-radius: 20px; }
+  .chevron { font-size: 12px; transition: transform 0.2s; color: var(--color-text-secondary); }
+  .chevron.open { transform: rotate(180deg); }
+  .section-body { padding: 0 16px 14px; display: none; }
+  .section-body.open { display: block; }
+  .divider { height: 0.5px; background: var(--color-border-tertiary); margin: 0 0 12px; }
+  .indicator-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  @media (max-width: 500px) { .indicator-grid { grid-template-columns: 1fr; } }
+  .indicator-card { border-radius: 8px; padding: 10px 12px; border: 0.5px solid var(--color-border-tertiary); background: var(--color-background-secondary); }
+  .ind-name { font-size: 13px; font-weight: 500; color: var(--color-text-primary); margin-bottom: 3px; }
+  .ind-desc { font-size: 12px; color: var(--color-text-secondary); line-height: 1.5; }
+  .imp-dots { display: flex; gap: 3px; margin-bottom: 5px; }
+  .dot { width: 6px; height: 6px; border-radius: 50%; }
+  .dot.fill { opacity: 1; }
+  .dot.empty { opacity: 0.2; }
+  .sub-label { font-size: 11px; color: var(--color-text-tertiary); margin-bottom: 8px; }
+
+  /* color themes per category */
+  .cat-money .section-header { background: #E6F1FB; }
+  .cat-money .section-header .section-title { color: #0C447C; }
+  .cat-money .badge { background: #B5D4F4; color: #042C53; }
+  .cat-money .dot.fill { background: #185FA5; }
+
+  .cat-inflation .section-header { background: #FAEEDA; }
+  .cat-inflation .section-header .section-title { color: #633806; }
+  .cat-inflation .badge { background: #FAC775; color: #412402; }
+  .cat-inflation .dot.fill { background: #BA7517; }
+
+  .cat-growth .section-header { background: #EAF3DE; }
+  .cat-growth .section-header .section-title { color: #27500A; }
+  .cat-growth .badge { background: #C0DD97; color: #173404; }
+  .cat-growth .dot.fill { background: #3B6D11; }
+
+  .cat-earnings .section-header { background: #EEEDFE; }
+  .cat-earnings .section-header .section-title { color: #3C3489; }
+  .cat-earnings .badge { background: #CECBF6; color: #26215C; }
+  .cat-earnings .dot.fill { background: #534AB7; }
+
+  .cat-risk .section-header { background: #FCEBEB; }
+  .cat-risk .section-header .section-title { color: #791F1F; }
+  .cat-risk .badge { background: #F7C1C1; color: #501313; }
+  .cat-risk .dot.fill { background: #A32D2D; }
+
+  .cat-flow .section-header { background: #E1F5EE; }
+  .cat-flow .section-header .section-title { color: #085041; }
+  .cat-flow .badge { background: #9FE1CB; color: #04342C; }
+  .cat-flow .dot.fill { background: #0F6E56; }
+
+  .cat-tech .section-header { background: #FBEAF0; }
+  .cat-tech .section-header .section-title { color: #72243E; }
+  .cat-tech .badge { background: #F4C0D1; color: #4B1528; }
+  .cat-tech .dot.fill { background: #993556; }
+
+  .cat-sentiment .section-header { background: #FAECE7; }
+  .cat-sentiment .section-header .section-title { color: #712B13; }
+  .cat-sentiment .badge { background: #F5C4B3; color: #4A1B0C; }
+  .cat-sentiment .dot.fill { background: #993C1D; }
+
+  .cat-global .section-header { background: #F1EFE8; }
+  .cat-global .section-header .section-title { color: #444441; }
+  .cat-global .badge { background: #D3D1C7; color: #2C2C2A; }
+  .cat-global .dot.fill { background: #5F5E5A; }
+
+  @media (prefers-color-scheme: dark) {
+    .cat-money .section-header { background: #0C447C; }
+    .cat-money .section-header .section-title { color: #B5D4F4; }
+    .cat-money .badge { background: #185FA5; color: #E6F1FB; }
+    .cat-inflation .section-header { background: #633806; }
+    .cat-inflation .section-header .section-title { color: #FAC775; }
+    .cat-inflation .badge { background: #854F0B; color: #FAEEDA; }
+    .cat-growth .section-header { background: #27500A; }
+    .cat-growth .section-header .section-title { color: #C0DD97; }
+    .cat-growth .badge { background: #3B6D11; color: #EAF3DE; }
+    .cat-earnings .section-header { background: #3C3489; }
+    .cat-earnings .section-header .section-title { color: #CECBF6; }
+    .cat-earnings .badge { background: #534AB7; color: #EEEDFE; }
+    .cat-risk .section-header { background: #791F1F; }
+    .cat-risk .section-header .section-title { color: #F7C1C1; }
+    .cat-risk .badge { background: #A32D2D; color: #FCEBEB; }
+    .cat-flow .section-header { background: #085041; }
+    .cat-flow .section-header .section-title { color: #9FE1CB; }
+    .cat-flow .badge { background: #0F6E56; color: #E1F5EE; }
+    .cat-tech .section-header { background: #72243E; }
+    .cat-tech .section-header .section-title { color: #F4C0D1; }
+    .cat-tech .badge { background: #993556; color: #FBEAF0; }
+    .cat-sentiment .section-header { background: #712B13; }
+    .cat-sentiment .section-header .section-title { color: #F5C4B3; }
+    .cat-sentiment .badge { background: #993C1D; color: #FAECE7; }
+    .cat-global .section-header { background: #444441; }
+    .cat-global .section-header .section-title { color: #D3D1C7; }
+    .cat-global .badge { background: #5F5E5A; color: #F1EFE8; }
+  }
+</style>
+
+<div class="container">
+
+<script>
+const categories = [
+  {
+    key: "money", label: "货币流动性", icon: "💧", count: "核心驱动",
+    sub: "决定市场整体估值水位，是牛熊切换的底层逻辑",
+    open: true,
+    indicators: [
+      { name: "联邦基金利率", imp: 5, desc: "Fed基准利率直接决定无风险收益率，影响股票折现率与估值上限" },
+      { name: "美联储资产负债表规模", imp: 5, desc: "QE扩表→流动性注入→风险资产上涨；QT缩表→收紧" },
+      { name: "SOFR / 隔夜利率", imp: 4, desc: "短端融资成本，反映金融体系实际流动性松紧" },
+      { name: "M2货币供应量同比", imp: 4, desc: "广义货币增速，领先市场流动性约6-12个月" },
+      { name: "美债收益率曲线（2Y-10Y）", imp: 5, desc: "倒挂是衰退预警信号，正常化预示经济改善" },
+      { name: "实际利率（TIPS）", imp: 4, desc: "名义利率-通胀预期，实际利率上升压制成长股估值" },
+      { name: "联邦基金期货隐含路径", imp: 4, desc: "市场对Fed加/降息节奏的定价，影响短期情绪" },
+      { name: "银行超额准备金", imp: 3, desc: "商业银行在Fed的超额存款，反映系统流动性余量" },
+    ]
+  },
+  {
+    key: "inflation", label: "通胀", icon: "🔥", count: "政策触发器",
+    sub: "通胀决定Fed政策空间，是利率预期的核心输入",
+    indicators: [
+      { name: "CPI（同比 & 核心CPI）", imp: 5, desc: "最直接的通胀观测，核心CPI剔除食品能源，更反映趋势" },
+      { name: "PCE（个人消费支出平减指数）", imp: 5, desc: "Fed官方锚定目标（2%），是政策决策的直接依据" },
+      { name: "PPI（生产者价格指数）", imp: 4, desc: "上游价格传导，领先CPI约1-3个月" },
+      { name: "通胀预期（5Y5Y互换 / 密歇根）", imp: 4, desc: "通胀预期一旦脱锚，Fed被迫激进紧缩" },
+      { name: "大宗商品价格（油、铜、农产品）", imp: 3, desc: "通胀的上游传导链，铜价还有经济晴雨表功能" },
+      { name: "房租OER（等额自有住房租金）", imp: 4, desc: "占CPI权重约30%，粘性高，是通胀下行最大阻力" },
+    ]
+  },
+  {
+    key: "growth", label: "经济增长 / 基本面", icon: "📈", count: "盈利地基",
+    sub: "企业盈利的宏观土壤，决定盈利预期的中期方向",
+    indicators: [
+      { name: "GDP增速（实际 & 名义）", imp: 5, desc: "经济总量增长，名义GDP与企业营收增长高度相关" },
+      { name: "非农就业（NFP）& 失业率", imp: 5, desc: "劳动市场健康度，就业强→消费强→盈利强" },
+      { name: "ISM制造业PMI", imp: 4, desc: "50为荣枯线，领先盈利约两季度，是市场最敏感的月度数据" },
+      { name: "ISM服务业PMI", imp: 4, desc: "美国经济结构以服务业为主（占GDP约75%），权重更高" },
+      { name: "消费者信心指数（密歇根 / Conference Board）", imp: 4, desc: "前瞻消费意愿，美国GDP约70%来自消费" },
+      { name: "零售销售额", imp: 4, desc: "消费支出的实际跟踪，核心零售剔除汽车和加油站" },
+      { name: "工业产出 & 产能利用率", imp: 3, desc: "制造业实际活动，产能利用率高→投资意愿强" },
+      { name: "住房开工 & 建筑许可", imp: 3, desc: "房地产是高度利率敏感行业，是经济领先指标之一" },
+      { name: "Conference Board LEI（领先指标综合）", imp: 4, desc: "汇总10个领先指标，连续下降预示衰退" },
+      { name: "贝弗里奇曲线（职位空缺 / JOLTS）", imp: 3, desc: "劳动市场供需结构，职位空缺多→薪资压力→通胀粘性" },
+    ]
+  },
+  {
+    key: "earnings", label: "企业盈利 & 估值", icon: "💼", count: "股价锚点",
+    sub: "股价=EPS×PE，盈利是分子，估值是分母",
+    indicators: [
+      { name: "S&P 500 EPS（实际 & 预期）", imp: 5, desc: "市场整体盈利，实际vs预期的差值（EPS surprise）直接驱动短期走势" },
+      { name: "NTM PE（前向市盈率）", imp: 5, desc: "估值贵贱的核心衡量，高PE对利率更敏感" },
+      { name: "盈利修正比率（上调/下调）", imp: 4, desc: "分析师修正方向比绝对值更有指向性" },
+      { name: "EPS增速预期（FactSet共识）", imp: 4, desc: "全年盈利增长预期，是多头/空头博弈的焦点" },
+      { name: "净利润率走势", imp: 4, desc: "成本（工资/利息/原材料）上升压缩利润率" },
+      { name: "股票回购规模", imp: 3, desc: "回购是主要买盘来源之一，减少流通股数拉高EPS" },
+      { name: "Shiller CAPE（周期调整PE）", imp: 3, desc: "用10年均值EPS平滑周期，适合判断长期高估区间" },
+      { name: "PEG比率", imp: 3, desc: "PE/EPS增速，调整增速后的估值比较" },
+    ]
+  },
+  {
+    key: "risk", label: "风险偏好 & 压力指标", icon: "⚡", count: "市场情绪",
+    sub: "衡量市场的恐惧程度与系统性风险",
+    indicators: [
+      { name: "VIX（波动率指数）", imp: 5, desc: "恐慌指数，>30预示极度恐慌，<15通常是Risk-On状态" },
+      { name: "信用利差（IG & HY spread）", imp: 5, desc: "高收益债spread扩大→信用风险上升→股票下压" },
+      { name: "美元指数（DXY）", imp: 4, desc: "强美元压制大宗商品和新兴市场，对跨国企业盈利负面" },
+      { name: "Ted Spread（3M LIBOR - 3M T-Bill）", imp: 4, desc: "银行间流动性压力，扩大预示金融体系紧张" },
+      { name: "MOVE指数（债券波动率）", imp: 4, desc: "美债期权隐含波动率，利率市场的VIX" },
+      { name: "OFR金融压力指数", imp: 3, desc: "美国财政部系统性风险综合评分" },
+      { name: "芝加哥联储全国金融条件指数（NFCI）", imp: 4, desc: "综合评估信贷/杠杆/风险子指数，-1标准差以内为宽松" },
+    ]
+  },
+  {
+    key: "flow", label: "资金流向 & 仓位", icon: "🔄", count: "结构动能",
+    sub: "谁在买、谁在卖、杠杆多高",
+    indicators: [
+      { name: "美股基金资金流（ICI/EPFR）", imp: 4, desc: "股票基金申购赎回净额，反映散户和机构参与度" },
+      { name: "期货投机净多单（CFTC COT报告）", imp: 4, desc: "大型投机者在指数期货上的净仓位，逆向指标价值强" },
+      { name: "机构仓位（Goldman VIP篮子 / CFTC）", imp: 4, desc: "对冲基金高度集中的持仓，拥挤交易风险" },
+      { name: "散户期权活跃度（零日期权 0DTE）", imp: 3, desc: "散户投机情绪，极度活跃往往是短期顶部信号" },
+      { name: "Margin debt（保证金债务）", imp: 4, desc: "杠杆水平，高杠杆市场脆弱性上升" },
+      { name: "股票回购窗口开/关", imp: 3, desc: "财报季前后回购静默期，影响市场买盘规模" },
+      { name: "外资持仓（TIC数据）", imp: 3, desc: "海外投资者对美元资产的配置意愿" },
+    ]
+  },
+  {
+    key: "tech", label: "技术面 & 市场结构", icon: "📊", count: "价格行为",
+    sub: "价格本身的动量与结构信号",
+    indicators: [
+      { name: "200日/50日均线位置", imp: 4, desc: "趋势核心，指数在200MA上下是多空分水岭" },
+      { name: "涨跌比 & 麦克莱伦振荡器", imp: 4, desc: "市场内部广度，上涨股票数量越宽越健康" },
+      { name: "52周新高vs新低比率", imp: 4, desc: "市场广度的极端信号，新低扩大预示底部未到" },
+      { name: "高于200MA的股票占比", imp: 4, desc: "超过75%为强势，低于25%可能出现底部反弹机会" },
+      { name: "量价关系（成交量验证）", imp: 3, desc: "放量突破可信度高，缩量下跌可能假摔" },
+      { name: "板块轮动（相对强弱RS）", imp: 4, desc: "防御板块（公用事业/医疗）领涨是Risk-Off信号" },
+      { name: "恐慌跌幅（drawdown）", imp: 3, desc: "历史上-10%修正、-20%熊市的统计规律" },
+    ]
+  },
+  {
+    key: "sentiment", label: "市场情绪 & 调查", icon: "🧠", count: "逆向参考",
+    sub: "极端情绪往往是反转信号",
+    indicators: [
+      { name: "AAII散户多空调查", imp: 4, desc: "极度看空（>50%）是历史底部的逆向信号" },
+      { name: "CNN恐惧贪婪指数", imp: 3, desc: "综合7个子指标，极度贪婪时需警惕" },
+      { name: "NAAIM主动股票仓位", imp: 4, desc: "注册投资顾问的股票敞口，低仓位是买入信号" },
+      { name: "Put/Call比率", imp: 4, desc: "看跌期权/看涨期权，>1.2通常对应市场恐慌低点" },
+      { name: "高盛情绪指标（Bull-Bear）", imp: 3, desc: "综合仓位/期权/资金流的合成情绪分" },
+      { name: "新闻媒体情绪（NLP指数）", imp: 2, desc: "财经媒体悲观情绪极值是反向信号" },
+    ]
+  },
+  {
+    key: "global", label: "全球宏观 & 地缘", icon: "🌐", count: "外部扰动",
+    sub: "外溢风险与跨市场联动",
+    indicators: [
+      { name: "美债外国持有者结构（日、中）", imp: 4, desc: "大规模抛售美债→收益率跳升→股票估值受压" },
+      { name: "全球PMI综合（JP Morgan）", imp: 4, desc: "全球需求状况，影响跨国企业营收预期" },
+      { name: "欧元区/日本央行政策", imp: 4, desc: "套利交易（carry trade）拆解会冲击美股流动性" },
+      { name: "人民币汇率（USDCNH）", imp: 3, desc: "快速贬值预示中国经济压力，影响全球Risk-Off" },
+      { name: "地缘风险事件", imp: 3, desc: "战争/制裁/能源冲击往往引发短期尖峰波动" },
+      { name: "商品价格指数（CRB）", imp: 3, desc: "大宗商品综合指数，反映全球实物需求" },
+      { name: "新兴市场资金流向（EM ETF）", imp: 3, desc: "风险偏好强时资金流入EM，流出时反流回美国" },
+    ]
+  },
+];
+
+function dots(imp) {
+  let html = '<div class="imp-dots">';
+  for (let i = 1; i <= 5; i++) {
+    html += `<div class="dot ${i <= imp ? 'fill' : 'empty'}"></div>`;
+  }
+  html += '</div>';
+  return html;
+}
+
+let html = '';
+categories.forEach((cat, ci) => {
+  const isOpen = cat.open ? 'open' : '';
+  html += `
+  <div class="section cat-${cat.key}">
+    <div class="section-header" onclick="toggleSection(${ci})">
+      <div class="section-title">
+        <span>${cat.icon} ${cat.label}</span>
+        <span class="badge">${cat.count}</span>
+      </div>
+      <span class="chevron ${isOpen}" id="chev-${ci}">▼</span>
+    </div>
+    <div class="section-body ${isOpen}" id="body-${ci}">
+      <div class="divider"></div>
+      <div class="sub-label">${cat.sub}</div>
+      <div class="indicator-grid">
+  `;
+  cat.indicators.forEach(ind => {
+    html += `
+    <div class="indicator-card">
+      ${dots(ind.imp)}
+      <div class="ind-name">${ind.name}</div>
+      <div class="ind-desc">${ind.desc}</div>
+    </div>
+    `;
+  });
+  html += `</div></div></div>`;
+});
+
+document.querySelector('.container').innerHTML = html;
+
+function toggleSection(ci) {
+  const body = document.getElementById('body-' + ci);
+  const chev = document.getElementById('chev-' + ci);
+  body.classList.toggle('open');
+  chev.classList.toggle('open');
+}
+</script>
+
+<div class="container"></div>
+
+<div style="margin: 8px 0 0; font-size: 12px; color: var(--color-text-tertiary); padding: 0 4px;">
+  ●●●●● 核心必看 &nbsp;&nbsp; ●●●● 重要参考 &nbsp;&nbsp; ●●● 辅助验证 &nbsp;&nbsp; 点击各类别可展开/收起
+</div>

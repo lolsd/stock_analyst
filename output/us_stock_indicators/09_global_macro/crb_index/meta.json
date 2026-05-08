@@ -1,0 +1,25 @@
+{
+  "category": "全球宏观与地缘",
+  "category_slug": "global_macro",
+  "indicator_name": "商品价格指数（CRB）",
+  "indicator_slug": "crb_index",
+  "representative_of_category": false,
+  "importance": "3/5",
+  "publicity": "高",
+  "reason": "反映全球需求与成本冲击",
+  "details": {
+    "公开性": "高，市场广泛可见。",
+    "计算逻辑": "综合能源、金属、农产品等多种商品价格形成指数。",
+    "代表含义": "反映全球实体需求和成本环境。",
+    "如何影响美股": "CRB 走强若伴随 PMI 改善，通常利好周期股；若单纯由油价冲击驱动，则可能对通胀和估值不利。",
+    "参考值": "更看同比和趋势；持续上行意味着上游价格回暖，持续回落通常指向需求降温。",
+    "重要性": "3/5，是全球增长与通胀的交叉验证指标。"
+  },
+  "source": "StockQ / existing csv",
+  "status": "fetched",
+  "proxy": false,
+  "note": "",
+  "data_path": "/Users/bytedance/Documents/trae_projects/american/output/us_stock_indicators/09_global_macro/crb_index/data.csv",
+  "chart_path": "/Users/bytedance/Documents/trae_projects/american/output/us_stock_indicators/09_global_macro/crb_index/chart.png",
+  "error": ""
+}

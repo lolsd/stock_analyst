@@ -1,0 +1,25 @@
+{
+  "category": "货币流动性",
+  "category_slug": "money_liquidity",
+  "indicator_name": "实际利率（10Y TIPS）",
+  "indicator_slug": "real_rate_10y_tips",
+  "representative_of_category": false,
+  "importance": "4/5",
+  "publicity": "高",
+  "reason": "成长股估值的关键压制变量",
+  "details": {
+    "公开性": "高，市场报价公开。",
+    "计算逻辑": "10 年期 TIPS 收益率可视为剔除通胀补偿后的真实长期利率，也可理解为名义利率减通胀预期。",
+    "代表含义": "真实资本成本和真实贴现率。",
+    "如何影响美股": "实际利率上升时，远期现金流折现值下降，科技和长久期资产通常承压；实际利率回落有利于估值扩张。",
+    "参考值": "0% 附近偏中性；低于 0% 往往极度宽松；高于 1.5% 常对高估值板块形成明显压制。",
+    "重要性": "4/5，是成长股估值的关键解释变量。"
+  },
+  "source": "FRED",
+  "status": "fetched",
+  "proxy": false,
+  "note": "",
+  "data_path": "/Users/bytedance/Documents/trae_projects/american/output/us_stock_indicators/01_money_liquidity/real_rate_10y_tips/data.csv",
+  "chart_path": "/Users/bytedance/Documents/trae_projects/american/output/us_stock_indicators/01_money_liquidity/real_rate_10y_tips/chart.png",
+  "error": ""
+}

@@ -1,0 +1,25 @@
+{
+  "category": "全球宏观与地缘",
+  "category_slug": "global_macro",
+  "indicator_name": "美债外国持有者结构（TIC）",
+  "indicator_slug": "foreign_treasury_holdings",
+  "representative_of_category": false,
+  "importance": "4/5",
+  "publicity": "高",
+  "reason": "观察海外官方和私人部门是否减配美债",
+  "details": {
+    "公开性": "高，美国财政部公开。",
+    "计算逻辑": "统计外国官方和私人部门持有美债的存量与变化。",
+    "代表含义": "衡量全球是否继续愿意为美国财政融资并持有美元债券。",
+    "如何影响美股": "若外资减持美债，长端收益率可能上升，进而压制股市估值；若官方需求稳定，则有利于利率中枢稳定。",
+    "参考值": "关注主要持有国变化趋势；连续减持且叠加财政供给高增时需提高警惕。",
+    "重要性": "4/5，是长期利率与外部资金约束的重要观察口。"
+  },
+  "source": "Manual",
+  "status": "pending_manual",
+  "proxy": false,
+  "note": "TIC parser not wired.",
+  "data_path": "",
+  "chart_path": "",
+  "error": ""
+}

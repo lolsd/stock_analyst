@@ -1,0 +1,25 @@
+{
+  "category": "全球宏观与地缘",
+  "category_slug": "global_macro",
+  "indicator_name": "欧元区 / 日本央行政策",
+  "indicator_slug": "ecb_boj_policy",
+  "representative_of_category": false,
+  "importance": "4/5",
+  "publicity": "高",
+  "reason": "全球套息与流动性环境的重要变量",
+  "details": {
+    "公开性": "高，ECB、BOJ 官方公开。",
+    "计算逻辑": "观察政策利率、资产购买、收益率曲线控制和前瞻指引等政策变化。",
+    "代表含义": "反映全球主要发达经济体是否仍在提供流动性。",
+    "如何影响美股": "若日本或欧洲收紧过快，套息交易和跨境资本流动可能逆转，从而冲击美债和美股估值。",
+    "参考值": "关键不在绝对区间，而在政策边际变化；特别要关注 BOJ 调整 YCC、ECB 超预期偏鹰。",
+    "重要性": "4/5，对全球流动性外溢影响明显。"
+  },
+  "source": "Manual",
+  "status": "pending_manual",
+  "proxy": false,
+  "note": "Policy-rate combined public feed not wired.",
+  "data_path": "",
+  "chart_path": "",
+  "error": ""
+}

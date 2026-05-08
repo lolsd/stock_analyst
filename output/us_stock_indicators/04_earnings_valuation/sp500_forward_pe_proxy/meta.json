@@ -1,0 +1,25 @@
+{
+  "category": "企业盈利与估值",
+  "category_slug": "earnings_valuation",
+  "indicator_name": "NTM PE（前向市盈率）",
+  "indicator_slug": "sp500_forward_pe_proxy",
+  "representative_of_category": false,
+  "importance": "5/5",
+  "publicity": "高",
+  "reason": "最常用的美股估值温度计",
+  "details": {
+    "公开性": "高，主流终端和网站均可获取。",
+    "计算逻辑": "指数当前价格除以未来 12 个月预期 EPS。",
+    "代表含义": "衡量市场愿意为未来盈利支付多少倍价格。",
+    "如何影响美股": "利率下行、风险偏好回升时 PE 易扩张；利率上行或增长担忧加剧时 PE 会压缩。",
+    "参考值": "标普 500 前向 PE 16 到 18 倍常见于中性区；低于 15 倍偏保守；高于 20 倍通常需要强盈利或低利率支撑。",
+    "重要性": "5/5，是估值判断最实用的单一指标。"
+  },
+  "source": "Multpl / existing csv",
+  "status": "fetched",
+  "proxy": true,
+  "note": "Uses TTM PE public proxy because NTM consensus requires commercial data.",
+  "data_path": "/Users/bytedance/Documents/trae_projects/american/output/us_stock_indicators/04_earnings_valuation/sp500_forward_pe_proxy/data.csv",
+  "chart_path": "/Users/bytedance/Documents/trae_projects/american/output/us_stock_indicators/04_earnings_valuation/sp500_forward_pe_proxy/chart.png",
+  "error": ""
+}

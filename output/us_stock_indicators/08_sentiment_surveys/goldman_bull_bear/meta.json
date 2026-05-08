@@ -1,0 +1,25 @@
+{
+  "category": "市场情绪与调查",
+  "category_slug": "sentiment_surveys",
+  "indicator_name": "高盛 Bull-Bear 情绪指标",
+  "indicator_slug": "goldman_bull_bear",
+  "representative_of_category": false,
+  "importance": "3/5",
+  "publicity": "中低",
+  "reason": "机构整理后的综合情绪指标",
+  "details": {
+    "公开性": "中低，多依赖投行研报或媒体转引。",
+    "计算逻辑": "通常综合仓位、波动率、资金流和估值等变量形成情绪得分。",
+    "代表含义": "反映机构视角下市场处于“偏多还是偏空”。",
+    "如何影响美股": "适合作为综合参考，但因口径不完全透明，更适合辅助，不宜做核心判断。",
+    "参考值": "更看历史分位和极端区间；接近历史高位要防止拥挤，接近低位则关注反弹条件。",
+    "重要性": "3/5，信息价值有，但公开性较弱。"
+  },
+  "source": "Manual",
+  "status": "pending_manual",
+  "proxy": false,
+  "note": "Commercial source only.",
+  "data_path": "",
+  "chart_path": "",
+  "error": ""
+}

@@ -1,0 +1,25 @@
+{
+  "category": "货币流动性",
+  "category_slug": "money_liquidity",
+  "indicator_name": "M2 货币供应量同比",
+  "indicator_slug": "m2_yoy",
+  "representative_of_category": false,
+  "importance": "4/5",
+  "publicity": "高",
+  "reason": "对中周期流动性环境有指示意义",
+  "details": {
+    "公开性": "高，FRED 可直接获取。",
+    "计算逻辑": "M2 包含现金、活期存款、储蓄存款和零售货币基金等，常用同比增速观察货币环境变化。",
+    "代表含义": "代表广义货币扩张或收缩的中周期背景。",
+    "如何影响美股": "M2 增速改善通常领先风险资产流动性修复；若 M2 同比长期低迷甚至负增长，通常不利于市场整体估值中枢。",
+    "参考值": "0% 到 6% 属一般区间；高于 6% 往往流动性偏友好；低于 0% 需要重视流动性收缩信号。",
+    "重要性": "4/5，更适合中周期判断，不适合短线交易。"
+  },
+  "source": "FRED",
+  "status": "fetched",
+  "proxy": false,
+  "note": "",
+  "data_path": "/Users/bytedance/Documents/trae_projects/american/output/us_stock_indicators/01_money_liquidity/m2_yoy/data.csv",
+  "chart_path": "/Users/bytedance/Documents/trae_projects/american/output/us_stock_indicators/01_money_liquidity/m2_yoy/chart.png",
+  "error": ""
+}

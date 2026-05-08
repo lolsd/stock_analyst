@@ -1,0 +1,25 @@
+{
+  "category": "资金流向与仓位",
+  "category_slug": "flows_positioning",
+  "indicator_name": "期货投机净多单（CFTC COT）",
+  "indicator_slug": "cftc_cot",
+  "representative_of_category": false,
+  "importance": "4/5",
+  "publicity": "高",
+  "reason": "适合捕捉拥挤交易与反转",
+  "details": {
+    "公开性": "高，CFTC 官方周度公布。",
+    "计算逻辑": "观察大型投机者在股指期货中的净多头或净空头仓位变化。",
+    "代表含义": "反映主动资金对方向的押注是否已经拥挤。",
+    "如何影响美股": "极端净多往往意味着好消息已被充分交易；极端净空则可能孕育逼空式反弹。",
+    "参考值": "更适合看历史分位；接近过去 1 到 3 年极值时更有参考意义。",
+    "重要性": "4/5，适合判断拥挤度而非基本面。"
+  },
+  "source": "Manual",
+  "status": "pending_manual",
+  "proxy": false,
+  "note": "CFTC parsing not wired yet.",
+  "data_path": "",
+  "chart_path": "",
+  "error": ""
+}

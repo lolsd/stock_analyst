@@ -1,0 +1,25 @@
+{
+  "category": "市场情绪与调查",
+  "category_slug": "sentiment_surveys",
+  "indicator_name": "新闻媒体情绪（NLP 指数）",
+  "indicator_slug": "news_sentiment",
+  "representative_of_category": false,
+  "importance": "2/5",
+  "publicity": "中低",
+  "reason": "用于辅助识别极端舆情",
+  "details": {
+    "公开性": "中低，通常由研究机构或数据商整理。",
+    "计算逻辑": "用自然语言处理模型对财经新闻、标题或社交内容进行正负面打分后合成指数。",
+    "代表含义": "反映舆论层面的情绪温度。",
+    "如何影响美股": "极端悲观舆情常与阶段性底部接近，但噪音大，需要结合价格和仓位指标使用。",
+    "参考值": "更适合看分位和极值反转；连续极端悲观后若价格不再创新低，常有反转价值。",
+    "重要性": "2/5，可选的辅助验证指标。"
+  },
+  "source": "Manual",
+  "status": "pending_manual",
+  "proxy": false,
+  "note": "Commercial/LLM sentiment feed not wired.",
+  "data_path": "",
+  "chart_path": "",
+  "error": ""
+}

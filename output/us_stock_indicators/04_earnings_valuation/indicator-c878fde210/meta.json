@@ -1,0 +1,18 @@
+{
+  "category": "企业盈利与估值",
+  "category_slug": "earnings_valuation",
+  "indicator_name": "盈利修正比率（上调/下调）",
+  "indicator_slug": "indicator-c878fde210",
+  "representative_of_category": false,
+  "importance": "4/5",
+  "publicity": "中高",
+  "reason": "比绝对盈利水平更领先",
+  "details": {},
+  "source": "Manual",
+  "status": "pending_manual",
+  "proxy": false,
+  "note": "No fetcher registered.",
+  "data_path": "",
+  "chart_path": "",
+  "error": ""
+}

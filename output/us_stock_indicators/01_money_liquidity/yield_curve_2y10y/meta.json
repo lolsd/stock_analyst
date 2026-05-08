@@ -1,0 +1,25 @@
+{
+  "category": "货币流动性",
+  "category_slug": "money_liquidity",
+  "indicator_name": "美债收益率曲线（2Y-10Y）",
+  "indicator_slug": "yield_curve_2y10y",
+  "representative_of_category": false,
+  "importance": "5/5",
+  "publicity": "高",
+  "reason": "最经典的增长与衰退预警指标",
+  "details": {
+    "公开性": "高，Treasury、FRED 可获取。",
+    "计算逻辑": "10 年期国债收益率减去 2 年期国债收益率；正值代表曲线正常上斜，负值代表倒挂。",
+    "代表含义": "反映市场对未来增长、通胀和政策路径的综合预期。",
+    "如何影响美股": "倒挂往往意味着未来增长放缓与盈利承压；重新陡峭化若来自降息预期，通常先利多久期资产；若来自长端暴涨，则可能压制估值。",
+    "参考值": "0 到 100bp 通常较正常；小于 0 为衰退预警区；大幅重新陡峭化要区分是“好陡峭”还是“坏陡峭”。",
+    "重要性": "5/5，是宏观周期判断最经典的市场化指标。"
+  },
+  "source": "FRED",
+  "status": "fetched",
+  "proxy": false,
+  "note": "",
+  "data_path": "/Users/bytedance/Documents/trae_projects/american/output/us_stock_indicators/01_money_liquidity/yield_curve_2y10y/data.csv",
+  "chart_path": "/Users/bytedance/Documents/trae_projects/american/output/us_stock_indicators/01_money_liquidity/yield_curve_2y10y/chart.png",
+  "error": ""
+}

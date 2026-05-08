@@ -1,0 +1,25 @@
+{
+  "category": "经济增长 / 基本面",
+  "category_slug": "growth_fundamentals",
+  "indicator_name": "GDP 增速（实际 & 名义）",
+  "indicator_slug": "gdp_growth",
+  "representative_of_category": false,
+  "importance": "5/5",
+  "publicity": "高",
+  "reason": "决定营收与盈利的大方向",
+  "details": {
+    "公开性": "高，BEA 季度公布。",
+    "计算逻辑": "实际 GDP 扣除价格因素，名义 GDP 保留价格因素；名义 GDP 与企业收入增长联系更紧密。",
+    "代表含义": "反映经济总量扩张速度。",
+    "如何影响美股": "实际 GDP 决定景气度，名义 GDP 更贴近营收；若名义 GDP 高、实际 GDP 低，通常意味着通胀抬升而非真实需求改善。",
+    "参考值": "实际 GDP 1.5% 到 3% 较健康；低于 1% 需关注放缓；连续负增长则进入衰退讨论区。",
+    "重要性": "5/5，是盈利大方向的宏观底盘。"
+  },
+  "source": "FRED",
+  "status": "fetched",
+  "proxy": false,
+  "note": "",
+  "data_path": "/Users/bytedance/Documents/trae_projects/american/output/us_stock_indicators/03_growth_fundamentals/gdp_growth/data.csv",
+  "chart_path": "/Users/bytedance/Documents/trae_projects/american/output/us_stock_indicators/03_growth_fundamentals/gdp_growth/chart.png",
+  "error": ""
+}

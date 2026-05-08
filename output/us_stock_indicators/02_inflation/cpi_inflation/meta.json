@@ -1,0 +1,25 @@
+{
+  "category": "通胀",
+  "category_slug": "inflation",
+  "indicator_name": "CPI（同比 & 核心 CPI）",
+  "indicator_slug": "cpi_inflation",
+  "representative_of_category": false,
+  "importance": "5/5",
+  "publicity": "高",
+  "reason": "市场最敏感的通胀数据发布",
+  "details": {
+    "公开性": "高，BLS 官方发布。",
+    "计算逻辑": "CPI 衡量城市消费者购买一篮子商品和服务的价格变化，核心 CPI 剔除食品和能源。",
+    "代表含义": "是市场最熟悉、反应最快的通胀观测指标。",
+    "如何影响美股": "高于预期的 CPI 往往立刻抬升美债收益率并压制股指；低于预期的 CPI 通常有利于风险偏好修复。",
+    "参考值": "2% 左右较健康；2% 到 3% 为可控通胀；高于 3% 需警惕 Fed 重新偏鹰；核心 CPI 比总 CPI 更重要。",
+    "重要性": "5/5，是交易层面最敏感的通胀数据。"
+  },
+  "source": "FRED",
+  "status": "fetched",
+  "proxy": false,
+  "note": "",
+  "data_path": "/Users/bytedance/Documents/trae_projects/american/output/us_stock_indicators/02_inflation/cpi_inflation/data.csv",
+  "chart_path": "/Users/bytedance/Documents/trae_projects/american/output/us_stock_indicators/02_inflation/cpi_inflation/chart.png",
+  "error": ""
+}

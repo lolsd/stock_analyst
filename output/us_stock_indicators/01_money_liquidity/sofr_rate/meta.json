@@ -1,0 +1,25 @@
+{
+  "category": "货币流动性",
+  "category_slug": "money_liquidity",
+  "indicator_name": "SOFR / 隔夜利率",
+  "indicator_slug": "sofr_rate",
+  "representative_of_category": false,
+  "importance": "4/5",
+  "publicity": "高",
+  "reason": "反映短端融资真实成本",
+  "details": {
+    "公开性": "高，纽约联储公布。",
+    "计算逻辑": "SOFR 基于美国国债回购市场交易，反映以国债为抵押的隔夜融资成本。",
+    "代表含义": "比政策利率更贴近金融体系实际短端资金状况。",
+    "如何影响美股": "若 SOFR 明显高于政策利率或波动放大，说明短端资金紧张，往往先冲击杠杆交易、再外溢到股票风险偏好。",
+    "参考值": "通常围绕政策利率运行；与政策区间偏离不大属正常；若短期跳升 20 到 30bp 以上，需要关注流动性扰动。",
+    "重要性": "4/5，适合作为政策利率的实时补充。"
+  },
+  "source": "FRED",
+  "status": "fetch_failed",
+  "proxy": false,
+  "note": "",
+  "data_path": "",
+  "chart_path": "",
+  "error": "HTTPSConnectionPool(host='fred.stlouisfed.org', port=443): Read timed out. (read timeout=20)"
+}

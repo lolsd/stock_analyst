@@ -1,0 +1,25 @@
+{
+  "category": "技术面与市场结构",
+  "category_slug": "technical_structure",
+  "indicator_name": "涨跌比 & 麦克莱伦振荡器",
+  "indicator_slug": "market_breadth",
+  "representative_of_category": false,
+  "importance": "4/5",
+  "publicity": "高",
+  "reason": "反映市场广度是否同步",
+  "details": {
+    "公开性": "高，交易所数据可计算。",
+    "计算逻辑": "涨跌比看上涨股票数与下跌股票数；麦克莱伦振荡器基于涨跌家数的短期和长期 EMA 之差。",
+    "代表含义": "衡量市场上涨是否由大多数股票共同参与。",
+    "如何影响美股": "若指数创新高但广度走弱，说明上涨集中于少数权重股，趋势质量下降；广度修复通常先于普涨。",
+    "参考值": "涨跌比持续大于 1 偏积极；麦克莱伦振荡器高位回落提示短线过热，低位企稳提示修复可能。",
+    "重要性": "4/5，是识别“指数强、市场弱”最有用的指标之一。"
+  },
+  "source": "Manual",
+  "status": "pending_manual",
+  "proxy": false,
+  "note": "Breadth universe feed not wired.",
+  "data_path": "",
+  "chart_path": "",
+  "error": ""
+}

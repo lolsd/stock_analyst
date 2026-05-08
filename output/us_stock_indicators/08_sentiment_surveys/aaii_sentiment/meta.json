@@ -1,0 +1,25 @@
+{
+  "category": "市场情绪与调查",
+  "category_slug": "sentiment_surveys",
+  "indicator_name": "AAII 散户多空调查",
+  "indicator_slug": "aaii_sentiment",
+  "representative_of_category": false,
+  "importance": "4/5",
+  "publicity": "高",
+  "reason": "经典的散户情绪温度计",
+  "details": {
+    "公开性": "高，AAII 官方每周公布。",
+    "计算逻辑": "调查散户投资者未来 6 个月看多、看空和中性的比例。",
+    "代表含义": "反映散户主观情绪。",
+    "如何影响美股": "极端看空往往出现在市场底部附近；极端看多常出现在上涨后期。",
+    "参考值": "看空比例超过 45% 到 50% 通常进入极端区域；看多比例显著高于历史均值时需防追高。",
+    "重要性": "4/5，是经典逆向情绪工具。"
+  },
+  "source": "Manual",
+  "status": "pending_manual",
+  "proxy": false,
+  "note": "AAII parser not wired.",
+  "data_path": "",
+  "chart_path": "",
+  "error": ""
+}

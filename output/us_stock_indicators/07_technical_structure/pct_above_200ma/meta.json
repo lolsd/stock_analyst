@@ -1,0 +1,25 @@
+{
+  "category": "技术面与市场结构",
+  "category_slug": "technical_structure",
+  "indicator_name": "高于 200MA 的股票占比",
+  "indicator_slug": "pct_above_200ma",
+  "representative_of_category": false,
+  "importance": "4/5",
+  "publicity": "高",
+  "reason": "判断上涨是否具有普遍性",
+  "details": {
+    "公开性": "高，可由成分股数据直接计算。",
+    "计算逻辑": "统计指数成分股中，收盘价位于各自 200 日均线上方的股票占比。",
+    "代表含义": "代表市场趋势是否具有普遍性。",
+    "如何影响美股": "占比高说明市场内生强度强；占比很低但指数不跌，往往意味着只有少数龙头支撑指数。",
+    "参考值": "50% 附近中性；高于 70% 偏强；低于 30% 偏弱；低于 20% 时常进入超卖区域。",
+    "重要性": "4/5，是广度型技术指标中最实用的一个。"
+  },
+  "source": "Manual",
+  "status": "pending_manual",
+  "proxy": false,
+  "note": "Constituent-level batch feed not wired.",
+  "data_path": "",
+  "chart_path": "",
+  "error": ""
+}

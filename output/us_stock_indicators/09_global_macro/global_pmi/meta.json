@@ -1,0 +1,25 @@
+{
+  "category": "全球宏观与地缘",
+  "category_slug": "global_macro",
+  "indicator_name": "全球 PMI 综合（JP Morgan）",
+  "indicator_slug": "global_pmi",
+  "representative_of_category": false,
+  "importance": "4/5",
+  "publicity": "中高",
+  "reason": "全球增长脉冲对美股营收影响直接",
+  "details": {
+    "公开性": "中高，机构和媒体广泛引用。",
+    "计算逻辑": "汇总主要经济体制造业和服务业 PMI，形成全球经济活动扩散指数。",
+    "代表含义": "代表全球需求和贸易周期。",
+    "如何影响美股": "全球 PMI 回升时，工业、半导体、能源和跨国企业盈利通常改善；下行则压制外需相关板块。",
+    "参考值": "50 为荣枯线；高于 50 且持续改善偏积极；低于 50 且恶化要警惕全球需求走弱。",
+    "重要性": "4/5，是全球类别中最具代表性的指标。"
+  },
+  "source": "Manual",
+  "status": "pending_manual",
+  "proxy": false,
+  "note": "Commercial source not wired.",
+  "data_path": "",
+  "chart_path": "",
+  "error": ""
+}

@@ -1,0 +1,25 @@
+{
+  "category": "企业盈利与估值",
+  "category_slug": "earnings_valuation",
+  "indicator_name": "净利润率走势",
+  "indicator_slug": "net_margin_trend",
+  "representative_of_category": false,
+  "importance": "4/5",
+  "publicity": "中高",
+  "reason": "解释为何营收增长未必转化为利润增长",
+  "details": {
+    "公开性": "中高，可由财报和指数汇总数据获取。",
+    "计算逻辑": "净利润除以营业收入，观察行业或指数层面的利润率变化趋势。",
+    "代表含义": "代表企业把收入转化为利润的能力。",
+    "如何影响美股": "当工资、利息或原材料成本抬升时，利润率收窄会拖累 EPS；利润率修复则能放大利润弹性。",
+    "参考值": "绝对值受行业结构影响较大，更看同比和环比趋势；持续下行两个季度以上需要关注盈利质量恶化。",
+    "重要性": "4/5，是解释 EPS 变化来源的重要指标。"
+  },
+  "source": "Manual",
+  "status": "pending_manual",
+  "proxy": false,
+  "note": "Index-level margin feed not wired.",
+  "data_path": "",
+  "chart_path": "",
+  "error": ""
+}

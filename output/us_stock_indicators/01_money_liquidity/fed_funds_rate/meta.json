@@ -1,0 +1,25 @@
+{
+  "category": "货币流动性",
+  "category_slug": "money_liquidity",
+  "indicator_name": "联邦基金利率",
+  "indicator_slug": "fed_funds_rate",
+  "representative_of_category": true,
+  "importance": "5/5",
+  "publicity": "高",
+  "reason": "所有资产定价的无风险利率锚",
+  "details": {
+    "公开性": "高，FOMC、FRED 可直接获取。",
+    "计算逻辑": "联邦基金利率是美国存款机构之间隔夜拆借准备金的目标利率区间，上限和下限由 Fed 通过政策工具管理。",
+    "代表含义": "代表美国无风险短端资金价格，是整个金融体系资金成本的锚。",
+    "如何影响美股": "利率越高，折现率越高，成长股和高估值板块最敏感；利率下行通常先抬升估值，再改善融资条件。",
+    "参考值": "0% 到 2% 偏宽松；2% 到 4% 中性附近；4% 以上偏限制性；若市场预期快速降息，通常意味着增长或金融压力上升。",
+    "重要性": "5/5，货币条件中最核心的单一指标。"
+  },
+  "source": "FRED",
+  "status": "fetched",
+  "proxy": false,
+  "note": "",
+  "data_path": "/Users/bytedance/Documents/trae_projects/american/output/us_stock_indicators/01_money_liquidity/fed_funds_rate/data.csv",
+  "chart_path": "/Users/bytedance/Documents/trae_projects/american/output/us_stock_indicators/01_money_liquidity/fed_funds_rate/chart.png",
+  "error": ""
+}

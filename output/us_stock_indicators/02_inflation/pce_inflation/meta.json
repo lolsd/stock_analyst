@@ -1,0 +1,25 @@
+{
+  "category": "通胀",
+  "category_slug": "inflation",
+  "indicator_name": "PCE（个人消费支出平减指数）",
+  "indicator_slug": "pce_inflation",
+  "representative_of_category": false,
+  "importance": "5/5",
+  "publicity": "高",
+  "reason": "Fed 官方锚定通胀目标",
+  "details": {
+    "公开性": "高，BEA 官方发布。",
+    "计算逻辑": "PCE 基于全社会消费支出口径，用链式加权方法衡量消费品和服务价格变化；核心 PCE 剔除食品和能源。",
+    "代表含义": "这是 Fed 最关注的通胀指标，因为覆盖面更广、权重调整更灵活。",
+    "如何影响美股": "PCE 下行意味着 Fed 有更大空间放松政策，从而利好估值；若核心 PCE 粘性强，市场会重新定价更高更久利率。",
+    "参考值": "总 PCE 和核心 PCE 接近 2% 最理想；2% 到 3% 仍可容忍；连续高于 3% 通常对利率敏感板块不利。",
+    "重要性": "5/5，是通胀类别中最具政策代表性的指标。"
+  },
+  "source": "FRED",
+  "status": "fetched",
+  "proxy": false,
+  "note": "",
+  "data_path": "/Users/bytedance/Documents/trae_projects/american/output/us_stock_indicators/02_inflation/pce_inflation/data.csv",
+  "chart_path": "/Users/bytedance/Documents/trae_projects/american/output/us_stock_indicators/02_inflation/pce_inflation/chart.png",
+  "error": ""
+}

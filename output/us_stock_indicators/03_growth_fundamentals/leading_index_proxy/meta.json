@@ -1,0 +1,25 @@
+{
+  "category": "经济增长 / 基本面",
+  "category_slug": "growth_fundamentals",
+  "indicator_name": "Conference Board LEI",
+  "indicator_slug": "leading_index_proxy",
+  "representative_of_category": false,
+  "importance": "4/5",
+  "publicity": "中高",
+  "reason": "综合领先指标，适合做拐点监测",
+  "details": {
+    "公开性": "中高，官方发布，主流媒体广泛引用。",
+    "计算逻辑": "综合制造业工时、失业救济申请、新订单、股价、利差、消费者预期等多个领先变量。",
+    "代表含义": "用于识别经济未来 6 到 12 个月方向。",
+    "如何影响美股": "LEI 持续恶化时，市场通常会提前交易衰退风险和盈利下修；LEI 见底回升常对应周期股和小盘股改善。",
+    "参考值": "连续数月同比为负需警惕；连续 6 个月改善通常说明周期修复开始更可信。",
+    "重要性": "4/5，适合做趋势和拐点确认。"
+  },
+  "source": "AKShare",
+  "status": "fetched",
+  "proxy": true,
+  "note": "Uses Conference Board consumer confidence as a public cycle proxy in the current environment.",
+  "data_path": "/Users/bytedance/Documents/trae_projects/american/output/us_stock_indicators/03_growth_fundamentals/leading_index_proxy/data.csv",
+  "chart_path": "/Users/bytedance/Documents/trae_projects/american/output/us_stock_indicators/03_growth_fundamentals/leading_index_proxy/chart.png",
+  "error": ""
+}

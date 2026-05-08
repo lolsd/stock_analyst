@@ -1,0 +1,25 @@
+{
+  "category": "资金流向与仓位",
+  "category_slug": "flows_positioning",
+  "indicator_name": "外资持仓（TIC 数据）",
+  "indicator_slug": "tic_holdings",
+  "representative_of_category": false,
+  "importance": "3/5",
+  "publicity": "高",
+  "reason": "观察全球资金是否继续配置美元资产",
+  "details": {
+    "公开性": "高，美国财政部公开。",
+    "计算逻辑": "TIC 统计海外官方和私人部门持有美国证券和国债的规模变化。",
+    "代表含义": "反映全球资本是否持续配置美国资产。",
+    "如何影响美股": "若海外资金持续流入，有助于支撑美元资产估值；若持续减持，可能推升美债收益率并压制股市估值。",
+    "参考值": "月度净流入为正偏友好；连续多月流出需关注海外需求边际转弱。",
+    "重要性": "3/5，更适合中期配置观察。"
+  },
+  "source": "Manual",
+  "status": "pending_manual",
+  "proxy": false,
+  "note": "TIC parser not wired yet.",
+  "data_path": "",
+  "chart_path": "",
+  "error": ""
+}

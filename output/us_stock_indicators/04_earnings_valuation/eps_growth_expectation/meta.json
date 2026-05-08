@@ -1,0 +1,25 @@
+{
+  "category": "企业盈利与估值",
+  "category_slug": "earnings_valuation",
+  "indicator_name": "EPS 增速预期",
+  "indicator_slug": "eps_growth_expectation",
+  "representative_of_category": false,
+  "importance": "4/5",
+  "publicity": "中高",
+  "reason": "定义下一阶段市场叙事",
+  "details": {
+    "公开性": "中高，主流卖方与数据商都会提供。",
+    "计算逻辑": "比较未来一年 EPS 与当前或上一年 EPS 的增长率。",
+    "代表含义": "市场下一阶段“讲什么故事”的核心变量，是高估值是否合理的解释器。",
+    "如何影响美股": "若 EPS 增速预期上升，即使估值不扩张，股价也可上涨；若增速预期被下修，高估值板块更脆弱。",
+    "参考值": "5% 到 10% 为温和增长；10% 以上支持乐观叙事；低于 5% 或转负需警惕市场重定价。",
+    "重要性": "4/5，对主题风格切换很关键。"
+  },
+  "source": "Manual",
+  "status": "pending_manual",
+  "proxy": false,
+  "note": "Forward consensus feed not wired.",
+  "data_path": "",
+  "chart_path": "",
+  "error": ""
+}

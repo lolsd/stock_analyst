@@ -1,0 +1,25 @@
+{
+  "category": "资金流向与仓位",
+  "category_slug": "flows_positioning",
+  "indicator_name": "散户期权活跃度（0DTE）",
+  "indicator_slug": "odte_activity",
+  "representative_of_category": false,
+  "importance": "3/5",
+  "publicity": "中高",
+  "reason": "反映短线情绪与 gamma 驱动风险",
+  "details": {
+    "公开性": "中高，交易所统计和媒体报道可得。",
+    "计算逻辑": "观察到期日为当天的超短期期权成交量、占比及其在看涨 / 看跌两侧的结构。",
+    "代表含义": "反映超短线投机热度和 gamma 效应。",
+    "如何影响美股": "活跃度过高时，日内波动可能被放大；若集中追涨，往往说明短线情绪过热。",
+    "参考值": "更看成交占比和极端变化；短期占比明显飙升需留意脆弱性上升。",
+    "重要性": "3/5，偏交易结构指标，适合和 VIX 联合观察。"
+  },
+  "source": "Manual",
+  "status": "pending_manual",
+  "proxy": false,
+  "note": "Exchange microstructure feed not wired.",
+  "data_path": "",
+  "chart_path": "",
+  "error": ""
+}

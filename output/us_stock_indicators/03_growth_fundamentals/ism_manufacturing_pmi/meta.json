@@ -1,0 +1,25 @@
+{
+  "category": "经济增长 / 基本面",
+  "category_slug": "growth_fundamentals",
+  "indicator_name": "ISM 制造业 PMI",
+  "indicator_slug": "ism_manufacturing_pmi",
+  "representative_of_category": false,
+  "importance": "4/5",
+  "publicity": "高",
+  "reason": "周期敏感度高，领先性强",
+  "details": {
+    "公开性": "高，ISM 公布。",
+    "计算逻辑": "同样是扩散指数，重点看新订单、库存、就业、价格等分项。",
+    "代表含义": "虽然制造业占比不如服务业，但对周期拐点极其敏感。",
+    "如何影响美股": "制造业 PMI 往往领先工业、资本开支和周期股表现；若新订单回升，市场通常会提前交易“盈利周期修复”。",
+    "参考值": "50 为分界；47 到 50 为弱势收缩但可能筑底；持续高于 52 通常代表周期修复更扎实。",
+    "重要性": "4/5，对拐点交易价值很高。"
+  },
+  "source": "FRED",
+  "status": "fetched",
+  "proxy": false,
+  "note": "",
+  "data_path": "/Users/bytedance/Documents/trae_projects/american/output/us_stock_indicators/03_growth_fundamentals/ism_manufacturing_pmi/data.csv",
+  "chart_path": "/Users/bytedance/Documents/trae_projects/american/output/us_stock_indicators/03_growth_fundamentals/ism_manufacturing_pmi/chart.png",
+  "error": ""
+}

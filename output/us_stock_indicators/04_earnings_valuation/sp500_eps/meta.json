@@ -1,0 +1,25 @@
+{
+  "category": "企业盈利与估值",
+  "category_slug": "earnings_valuation",
+  "indicator_name": "S&P 500 EPS（实际 & 预期）",
+  "indicator_slug": "sp500_eps",
+  "representative_of_category": false,
+  "importance": "5/5",
+  "publicity": "中高",
+  "reason": "股价长期最终锚点",
+  "details": {
+    "公开性": "中高，FactSet、S&P、主流财经媒体广泛整理。",
+    "计算逻辑": "汇总标普 500 成分股的每股盈利，分为已实现 EPS 和未来 12 个月或未来年度预期 EPS。",
+    "代表含义": "代表整个美股盈利能力的核心锚点。",
+    "如何影响美股": "股价长期由“EPS × 估值倍数”决定；若 EPS 上修，即使利率不降，指数也能上涨。",
+    "参考值": "更看趋势而非绝对区间；未来 12 个月 EPS 持续上修为积极信号；连续两个季度下修往往压制市场。",
+    "重要性": "5/5，是企业盈利类别中最具代表性的指标。"
+  },
+  "source": "Multpl",
+  "status": "fetched",
+  "proxy": true,
+  "note": "Fetches historical realized EPS. Forward EPS is not publicly wired yet.",
+  "data_path": "/Users/bytedance/Documents/trae_projects/american/output/us_stock_indicators/04_earnings_valuation/sp500_eps/data.csv",
+  "chart_path": "/Users/bytedance/Documents/trae_projects/american/output/us_stock_indicators/04_earnings_valuation/sp500_eps/chart.png",
+  "error": ""
+}

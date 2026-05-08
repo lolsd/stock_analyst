@@ -1,0 +1,25 @@
+{
+  "category": "全球宏观与地缘",
+  "category_slug": "global_macro",
+  "indicator_name": "人民币汇率（USDCNH）",
+  "indicator_slug": "usd_cnh",
+  "representative_of_category": false,
+  "importance": "3/5",
+  "publicity": "高",
+  "reason": "中国风险外溢的高频代理变量",
+  "details": {
+    "公开性": "高，离岸市场实时可见。",
+    "计算逻辑": "观察美元兑离岸人民币汇率变化。",
+    "代表含义": "可作为中国增长、资本流动和亚洲风险偏好的高频代理变量。",
+    "如何影响美股": "USDCNH 快速上升常伴随中国风险担忧和全球 risk-off；对原材料、奢侈品、半导体链条和 EM 风险资产尤其敏感。",
+    "参考值": "趋势比绝对值更重要；短时间快速贬值通常比缓慢贬值更值得关注。",
+    "重要性": "3/5，是全球风险情绪的高频外溢观察指标。"
+  },
+  "source": "Frankfurter",
+  "status": "fetched",
+  "proxy": true,
+  "note": "Uses USD/CNY public API proxy for USDCNH in the current environment.",
+  "data_path": "/Users/bytedance/Documents/trae_projects/american/output/us_stock_indicators/09_global_macro/usd_cnh/data.csv",
+  "chart_path": "/Users/bytedance/Documents/trae_projects/american/output/us_stock_indicators/09_global_macro/usd_cnh/chart.png",
+  "error": ""
+}

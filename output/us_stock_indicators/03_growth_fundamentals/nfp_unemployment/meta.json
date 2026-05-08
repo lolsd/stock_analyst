@@ -1,0 +1,25 @@
+{
+  "category": "经济增长 / 基本面",
+  "category_slug": "growth_fundamentals",
+  "indicator_name": "非农就业（NFP）& 失业率",
+  "indicator_slug": "nfp_unemployment",
+  "representative_of_category": false,
+  "importance": "5/5",
+  "publicity": "高",
+  "reason": "月度最关键的宏观就业脉搏",
+  "details": {
+    "公开性": "高，BLS 每月发布。",
+    "计算逻辑": "NFP 统计非农部门新增就业人数；失业率统计劳动力中失业人口占比。",
+    "代表含义": "反映劳动力市场强弱和经济景气韧性。",
+    "如何影响美股": "适度强劲的就业利好盈利预期；过热会强化紧缩预期；显著走弱则会打击盈利并提高衰退定价。",
+    "参考值": "月增 10 万到 20 万大致健康；失业率 3.5% 到 4.5% 相对稳健；失业率快速升破 4.5% 往往需提高警惕。",
+    "重要性": "5/5，是最能代表美国增长状态的月度数据。"
+  },
+  "source": "FRED",
+  "status": "fetched",
+  "proxy": false,
+  "note": "",
+  "data_path": "/Users/bytedance/Documents/trae_projects/american/output/us_stock_indicators/03_growth_fundamentals/nfp_unemployment/data.csv",
+  "chart_path": "/Users/bytedance/Documents/trae_projects/american/output/us_stock_indicators/03_growth_fundamentals/nfp_unemployment/chart.png",
+  "error": ""
+}

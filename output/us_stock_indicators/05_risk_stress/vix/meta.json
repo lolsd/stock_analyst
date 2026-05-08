@@ -1,0 +1,25 @@
+{
+  "category": "风险偏好与压力指标",
+  "category_slug": "risk_stress",
+  "indicator_name": "VIX（波动率指数）",
+  "indicator_slug": "vix",
+  "representative_of_category": false,
+  "importance": "5/5",
+  "publicity": "高",
+  "reason": "风险偏好的最直接市场定价",
+  "details": {
+    "公开性": "高，CBOE 实时公开。",
+    "计算逻辑": "基于标普 500 期权隐含波动率，反映未来 30 天预期波动水平。",
+    "代表含义": "市场愿意为下行保护支付多高成本，是最直观的“恐慌指数”。",
+    "如何影响美股": "VIX 飙升通常伴随风险资产快速下跌；VIX 回落通常意味着流动性和风险偏好修复。",
+    "参考值": "12 到 20 相对正常；20 到 30 说明波动升温；高于 30 往往是压力期；高于 40 常见于剧烈恐慌。",
+    "重要性": "5/5，是风险情绪类别最具代表性的指标。"
+  },
+  "source": "GitHub datasets/finance-vix",
+  "status": "fetched",
+  "proxy": false,
+  "note": "",
+  "data_path": "/Users/bytedance/Documents/trae_projects/american/output/us_stock_indicators/05_risk_stress/vix/data.csv",
+  "chart_path": "/Users/bytedance/Documents/trae_projects/american/output/us_stock_indicators/05_risk_stress/vix/chart.png",
+  "error": ""
+}

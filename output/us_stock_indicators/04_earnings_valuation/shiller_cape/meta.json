@@ -1,0 +1,25 @@
+{
+  "category": "企业盈利与估值",
+  "category_slug": "earnings_valuation",
+  "indicator_name": "Shiller CAPE",
+  "indicator_slug": "shiller_cape",
+  "representative_of_category": false,
+  "importance": "3/5",
+  "publicity": "高",
+  "reason": "判断长期高估或低估更有效",
+  "details": {
+    "公开性": "高，公开网站和研究数据可得。",
+    "计算逻辑": "指数价格除以过去 10 年经通胀调整后的平均盈利。",
+    "代表含义": "用长期平滑盈利衡量市场是否处于历史高估或低估区。",
+    "如何影响美股": "CAPE 对短期交易帮助有限，但对判断长期回报率和估值泡沫更有意义。",
+    "参考值": "20 到 25 大致中高位；高于 30 通常意味着未来长期回报率受压；低于 20 通常更具长期配置吸引力。",
+    "重要性": "3/5，更适合中长期配置框架。"
+  },
+  "source": "Multpl",
+  "status": "fetched",
+  "proxy": false,
+  "note": "",
+  "data_path": "/Users/bytedance/Documents/trae_projects/american/output/us_stock_indicators/04_earnings_valuation/shiller_cape/data.csv",
+  "chart_path": "/Users/bytedance/Documents/trae_projects/american/output/us_stock_indicators/04_earnings_valuation/shiller_cape/chart.png",
+  "error": ""
+}

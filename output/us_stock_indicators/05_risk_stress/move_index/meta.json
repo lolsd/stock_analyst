@@ -1,0 +1,25 @@
+{
+  "category": "风险偏好与压力指标",
+  "category_slug": "risk_stress",
+  "indicator_name": "MOVE 指数",
+  "indicator_slug": "move_index",
+  "representative_of_category": false,
+  "importance": "4/5",
+  "publicity": "高",
+  "reason": "利率市场波动对股市估值有强外溢",
+  "details": {
+    "公开性": "高，市场广泛引用。",
+    "计算逻辑": "基于美债期权隐含波动率，反映未来利率波动预期。",
+    "代表含义": "是债券市场的 VIX。",
+    "如何影响美股": "利率波动过大时，股票估值锚会变得不稳定，成长股和高 PE 资产通常最受伤。",
+    "参考值": "80 到 120 相对常见；高于 120 说明利率市场紧张；高于 150 常伴随宏观或政策不确定性。",
+    "重要性": "4/5，是近年来解释股债共振波动的关键指标。"
+  },
+  "source": "Yahoo Finance",
+  "status": "fetched",
+  "proxy": false,
+  "note": "",
+  "data_path": "/Users/bytedance/Documents/trae_projects/american/output/us_stock_indicators/05_risk_stress/move_index/data.csv",
+  "chart_path": "/Users/bytedance/Documents/trae_projects/american/output/us_stock_indicators/05_risk_stress/move_index/chart.png",
+  "error": ""
+}

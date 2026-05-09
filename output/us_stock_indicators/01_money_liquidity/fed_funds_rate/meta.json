@@ -19,7 +19,7 @@
   "status": "fetched",
   "proxy": false,
   "note": "",
-  "data_path": "/Users/bytedance/Documents/trae_projects/american/output/us_stock_indicators/01_money_liquidity/fed_funds_rate/data.csv",
-  "chart_path": "/Users/bytedance/Documents/trae_projects/american/output/us_stock_indicators/01_money_liquidity/fed_funds_rate/chart.png",
+  "data_path": "/root/stock_analyst/stock_analyst/output/us_stock_indicators/01_money_liquidity/fed_funds_rate/data.csv",
+  "chart_path": "/root/stock_analyst/stock_analyst/output/us_stock_indicators/01_money_liquidity/fed_funds_rate/chart.png",
   "error": ""
 }

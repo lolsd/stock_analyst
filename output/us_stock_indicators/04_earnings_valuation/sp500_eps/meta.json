@@ -19,7 +19,7 @@
   "status": "fetched",
   "proxy": true,
   "note": "Fetches historical realized EPS. Forward EPS is not publicly wired yet.",
-  "data_path": "/Users/bytedance/Documents/trae_projects/american/output/us_stock_indicators/04_earnings_valuation/sp500_eps/data.csv",
-  "chart_path": "/Users/bytedance/Documents/trae_projects/american/output/us_stock_indicators/04_earnings_valuation/sp500_eps/chart.png",
+  "data_path": "/root/stock_analyst/stock_analyst/output/us_stock_indicators/04_earnings_valuation/sp500_eps/data.csv",
+  "chart_path": "/root/stock_analyst/stock_analyst/output/us_stock_indicators/04_earnings_valuation/sp500_eps/chart.png",
   "error": ""
 }

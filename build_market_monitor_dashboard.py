@@ -614,11 +614,14 @@ def render_dashboard() -> str:
     .hero-title {{ font-size: 30px; font-weight: 800; margin: 0; }}
     .hero-desc {{ margin: 8px 0 0; color: #475569; line-height: 1.6; max-width: 780px; }}
     .hero-side {{ display: flex; flex-direction: column; align-items: flex-end; gap: 10px; }}
+    .hero-actions-row {{ display: flex; gap: 10px; flex-wrap: wrap; justify-content: flex-end; }}
     .hero-tags {{ display: flex; flex-wrap: wrap; gap: 8px; }}
     .hero-tags span {{ font-size: 12px; border-radius: 999px; background: #e2e8f0; color: #334155; padding: 6px 10px; }}
     .refresh-btn {{ border: 0; background: #2563eb; color: #fff; border-radius: 12px; padding: 10px 16px; font-size: 14px; font-weight: 700; cursor: pointer; box-shadow: 0 8px 18px rgba(37, 99, 235, 0.22); }}
     .refresh-btn:hover {{ background: #1d4ed8; }}
     .refresh-btn:disabled {{ background: #94a3b8; cursor: not-allowed; box-shadow: none; }}
+    .secondary-btn {{ display: inline-flex; align-items: center; justify-content: center; border: 1px solid #bfdbfe; background: #eff6ff; color: #1d4ed8; border-radius: 12px; padding: 10px 16px; font-size: 14px; font-weight: 700; min-height: 42px; }}
+    .secondary-btn:hover {{ background: #dbeafe; }}
     .refresh-status {{ min-height: 18px; font-size: 12px; color: #475569; text-align: right; }}
     .compare-panel {{ background: #fff; border: 1px solid #dbe4f0; border-radius: 24px; padding: 20px; box-shadow: 0 12px 32px rgba(15, 23, 42, 0.06); }}
     .compare-toolbar {{ display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; }}
@@ -731,7 +734,9 @@ def render_dashboard() -> str:
       .hero {{ border-radius: 20px; }}
       .hero-top {{ flex-direction: column; align-items: stretch; }}
       .hero-side {{ align-items: stretch; }}
+      .hero-actions-row {{ flex-direction: column; }}
       .refresh-btn {{ width: 100%; min-height: 44px; }}
+      .secondary-btn {{ width: 100%; min-height: 44px; }}
       .refresh-status {{ text-align: left; }}
       .hero-tags {{ overflow-x: auto; flex-wrap: nowrap; padding-bottom: 2px; }}
       .hero-tags span {{ white-space: nowrap; }}
@@ -799,7 +804,10 @@ def render_dashboard() -> str:
             <p class="hero-desc">一级页面聚焦大盘总览，二级页面按货币流动性、通胀、增长、估值、风险、技术结构和全球宏观分层展示。数据全部来自当前项目已有输出，适合直接做日常监控。</p>
           </div>
           <div class="hero-side">
-            <button class="refresh-btn" id="refresh-data-btn" type="button">刷新数据</button>
+            <div class="hero-actions-row">
+              <button class="refresh-btn" id="refresh-data-btn" type="button">刷新数据</button>
+              <a class="secondary-btn" href="strategy_dashboard.html">量化策略</a>
+            </div>
             <div class="refresh-status" id="refresh-status">点击后重新拉取数据，失败项自动保留旧数据</div>
             <div class="hero-tags">
               <span>静态 HTML</span>
@@ -1121,7 +1129,12 @@ def render_dashboard() -> str:
           method: "POST",
           headers: {{ "Content-Type": "application/json" }},
         }});
-        const payload = await response.json();
+        const responseText = await response.text();
+        const contentType = (response.headers.get("content-type") || "").toLowerCase();
+        if (!contentType.includes("application/json")) {{
+          throw new Error("刷新接口返回了 HTML 页面，请使用 `python3 dashboard_server.py` 打开页面，或检查 `/api/refresh` 的反向代理配置。");
+        }}
+        const payload = JSON.parse(responseText);
         if (!response.ok || !payload.ok) {{
           throw new Error(payload.message || "刷新失败");
         }}

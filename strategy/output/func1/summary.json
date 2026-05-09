@@ -1,0 +1,81 @@
+{
+  "schema_version": "1.0",
+  "strategy_slug": "func1",
+  "strategy_name": "XGBoost 多因子量化策略",
+  "headline": {
+    "total_return": 1.6885971716127903,
+    "annual_return": 0.2830408558581896,
+    "annual_volatility": 0.1554015697334393,
+    "sharpe": 1.8213513309015494,
+    "max_drawdown": -0.09962292305661526,
+    "calmar": 2.8411217737240935,
+    "win_rate": 0.416
+  },
+  "benchmark": {
+    "name": "NASDAQ",
+    "total_return": 0.533554550339044,
+    "annual_return": 0.11377176939776001,
+    "annual_volatility": 0.2226789121712544,
+    "sharpe": 0.5109229620731316,
+    "max_drawdown": -0.363952799091201,
+    "calmar": 0.31260034180764895,
+    "win_rate": 0.539
+  },
+  "classification": {
+    "accuracy": 0.499,
+    "macro_f1": 0.4345429048930114,
+    "weighted_f1": 0.47390511876040275
+  },
+  "top_features": [
+    {
+      "name": "pe_pct_chg20",
+      "score": 0.05059999999999999,
+      "method": "Permutation"
+    },
+    {
+      "name": "pe_zscore",
+      "score": 0.013600000000000011,
+      "method": "Permutation"
+    },
+    {
+      "name": "pe_pct",
+      "score": 0.006000000000000005,
+      "method": "Permutation"
+    },
+    {
+      "name": "nasdaq_ma_ratio",
+      "score": 0.003400000000000003,
+      "method": "Permutation"
+    },
+    {
+      "name": "nasdaq_ret1",
+      "score": 0.0030000000000000027,
+      "method": "Permutation"
+    },
+    {
+      "name": "nasdaq_vol_ratio",
+      "score": 0.0016000000000000014,
+      "method": "Permutation"
+    },
+    {
+      "name": "dxy_ret5",
+      "score": 0.001200000000000001,
+      "method": "Permutation"
+    },
+    {
+      "name": "vix_zscore",
+      "score": 0.0008000000000000007,
+      "method": "Permutation"
+    },
+    {
+      "name": "nasdaq_ret60",
+      "score": 0.0006000000000000005,
+      "method": "Permutation"
+    },
+    {
+      "name": "vix_mom5",
+      "score": 0.00040000000000000034,
+      "method": "Permutation"
+    }
+  ]
+}

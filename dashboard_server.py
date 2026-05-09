@@ -19,6 +19,7 @@ REFRESH_COMMANDS = [
     ["python3", str(BASE_DIR / "market_daily_charts.py")],
     ["python3", str(BASE_DIR / "us_stock_indicator_pipeline.py")],
     ["python3", str(BASE_DIR / "build_market_monitor_dashboard.py")],
+    ["python3", str(BASE_DIR / "build_strategy_dashboard.py")],
 ]
 
 

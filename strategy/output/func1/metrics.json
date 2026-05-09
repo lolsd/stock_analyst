@@ -1,0 +1,35 @@
+{
+  "schema_version": "1.0",
+  "columns": [
+    "name",
+    "annual_return",
+    "annual_volatility",
+    "sharpe",
+    "max_drawdown",
+    "calmar",
+    "win_rate",
+    "total_return"
+  ],
+  "rows": [
+    {
+      "name": "RandomForest Fallback 多因子策略",
+      "annual_return": 0.2830408558581896,
+      "annual_volatility": 0.1554015697334393,
+      "sharpe": 1.8213513309015494,
+      "max_drawdown": -0.09962292305661526,
+      "calmar": 2.8411217737240935,
+      "win_rate": 0.416,
+      "total_return": 1.6885971716127903
+    },
+    {
+      "name": "NASDAQ基准",
+      "annual_return": 0.11377176939776001,
+      "annual_volatility": 0.2226789121712544,
+      "sharpe": 0.5109229620731316,
+      "max_drawdown": -0.363952799091201,
+      "calmar": 0.31260034180764895,
+      "win_rate": 0.539,
+      "total_return": 0.533554550339044
+    }
+  ]
+}

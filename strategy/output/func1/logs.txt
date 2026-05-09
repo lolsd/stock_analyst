@@ -1,0 +1,66 @@
+训练集：2015-01-02 ~ 2020-12-31  (1511 days)
+测试集：2021-01-04  ~ 2024-12-23  (1000 days)
+模型：RandomForest Fallback
+XGBoost 不可用，已自动回退到 RandomForest：
+XGBoost Library (libxgboost.dylib) could not be loaded.
+Likely causes:
+  * OpenMP runtime is not installed
+    - vcomp140.dll or libgomp-1.dll for Windows
+    - libomp.dylib for Mac OSX
+    - libgomp.so for Linux and other UNIX-like OSes
+    Mac OSX users: Run `brew install libomp` to install OpenMP runtime.
+
+  * You are running 32-bit Python on a 64-bit OS
+
+Error message(s): ["dlopen(/Users/bytedance/Library/Python/3.9/lib/python/site-packages/xgboost/lib/libxgboost.dylib, 0x0006): Library not loaded: @rpath/libomp.dylib\n  Referenced from: <89AD948E-E564-3266-867D-7AF89D6488F0> /Users/bytedance/Library/Python/3.9/lib/python/site-packages/xgboost/lib/libxgboost.dylib\n  Reason: tried: '/opt/homebrew/opt/libomp/lib/libomp.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/opt/homebrew/opt/libomp/lib/libomp.dylib' (no such file), '/opt/homebrew/opt/libomp/lib/libomp.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/opt/homebrew/opt/libomp/lib/libomp.dylib' (no such file)"]
+
+SHAP 不可用，已自动回退到 Permutation Importance：No module named 'shap'
+
+── 真实数据区间 ──
+NASDAQ: 2000-01-03 ~ 2024-12-31  (6289 rows)
+VIX: 2000-01-03 ~ 2024-12-31  (6289 rows)
+PE_PCT: 2000-01-03 ~ 2024-12-31  (6289 rows)
+DXY: 2000-01-03 ~ 2024-12-31  (6289 rows)
+
+── 测试集分类报告 ──
+              precision    recall  f1-score   support
+
+        Down       0.54      0.37      0.44       330
+        Flat       0.34      0.20      0.25       224
+          Up       0.52      0.74      0.61       446
+
+    accuracy                           0.50      1000
+   macro avg       0.47      0.44      0.43      1000
+weighted avg       0.49      0.50      0.47      1000
+
+
+══════════ 测试集绩效 ══════════
+                               年化收益    年化波动   夏普比率     最大回撤 Calmar      胜率      总收益
+名称                                                                                 
+RandomForest Fallback 多因子策略  28.30%  15.54%  1.821   -9.96%  2.841  41.60%  168.86%
+NASDAQ基准                     11.38%  22.27%  0.511  -36.40%  0.313  53.90%   53.36%
+
+图表已保存：/Users/bytedance/Documents/trae_projects/american/strategy/output/func1/artifacts/report.png
+
+══════════ Permutation 因子重要性排名 ══════════
+                  Permutation_importance  RandomForest Fallback_importance  Permutation_rank  RandomForest Fallback_rank
+pe_pct_chg20                      0.0506                          0.098964                16                           1
+pe_zscore                         0.0136                          0.059548                18                           3
+pe_pct                            0.0060                          0.041365                15                          11
+nasdaq_ma_ratio                   0.0034                          0.043535                 6                          10
+nasdaq_ret1                       0.0030                          0.016560                 8                          24
+nasdaq_vol_ratio                  0.0016                          0.027278                14                          21
+dxy_ret5                          0.0012                          0.024997                 2                          22
+vix_zscore                        0.0008                          0.057324                24                           4
+nasdaq_ret60                      0.0006                          0.033821                11                          16
+vix_mom5                          0.0004                          0.020952                21                          23
+fear_index                       -0.0002                          0.037292                 5                          15
+nasdaq_ma_ratio2                 -0.0006                          0.053029                 7                           5
+nasdaq_ret5                      -0.0010                          0.027869                10                          19
+dxy_zscore                       -0.0014                          0.043933                 4                           9
+dxy_ret20                        -0.0028                          0.028638                 1                          18
+nasdaq_ret20                     -0.0030                          0.033803                 9                          17
+vix_level                        -0.0034                          0.063006                19                           2
+nasdaq_rsi                       -0.0038                          0.039002                12                          14
+dxy_trend                        -0.0080                          0.040472                 3                          13
+pe_x_nasdaq                      -0.0082                          0.044463                17                           7

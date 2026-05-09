@@ -669,7 +669,7 @@
                     <span class="badge status-fetched">fetched</span>
                     <span>重要性: 4/5</span>
                     <span>公开性: 高</span>
-                    <span>来源: Yahoo Finance</span>
+                    <span>来源: FRED stitched proxy</span>
                   </div>
                 </div>
                 <div class="right-note"></div>
@@ -678,7 +678,7 @@
               <a href="us_stock_indicators/05_risk_stress/dxy/chart.png" target="_blank"><img src="us_stock_indicators/05_risk_stress/dxy/chart.png" alt="美元指数（DXY）"></a>
               <div class="links"><a href="us_stock_indicators/05_risk_stress/dxy/data.csv" target="_blank">CSV</a></div>
               <div class="details"><p><strong>计算逻辑：</strong>衡量美元相对一篮子主要货币的强弱，欧元权重最高。</p><p><strong>代表含义：</strong>代表全球美元流动性与避险偏好。</p><p><strong>如何影响美股：</strong>美元走强通常压制大宗商品、新兴市场和跨国企业海外收入折算；美元回落通常有利于全球风险资产。</p><p><strong>参考值：</strong>95 到 103 大致常见；快速升破 105 需关注全球流动性压力；明显跌破 100 通常利好风险资产。</p></div>
-              <p class="note">Uses `DX-Y.NYB` price history and falls back to cached indicator CSV when yfinance is rate limited.</p>
+              <p class="note">Uses stitched FRED dollar-index proxy history (`DTWEXM` plus newer Fed dollar-index series) to cover 2000-present, then falls back to Stooq, Yahoo Finance, and cached CSV.</p>
               <p class="error"></p>
             </div>
             

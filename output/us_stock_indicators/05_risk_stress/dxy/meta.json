@@ -15,10 +15,10 @@
     "参考值": "95 到 103 大致常见；快速升破 105 需关注全球流动性压力；明显跌破 100 通常利好风险资产。",
     "重要性": "4/5，是全球资金环境的高频代理变量。"
   },
-  "source": "Yahoo Finance",
+  "source": "FRED stitched proxy",
   "status": "fetched",
   "proxy": false,
-  "note": "Uses `DX-Y.NYB` price history and falls back to cached indicator CSV when yfinance is rate limited.",
+  "note": "Uses stitched FRED dollar-index proxy history (`DTWEXM` plus newer Fed dollar-index series) to cover 2000-present, then falls back to Stooq, Yahoo Finance, and cached CSV.",
   "data_path": "/Users/bytedance/Documents/trae_projects/american/output/us_stock_indicators/05_risk_stress/dxy/data.csv",
   "chart_path": "/Users/bytedance/Documents/trae_projects/american/output/us_stock_indicators/05_risk_stress/dxy/chart.png",
   "error": ""

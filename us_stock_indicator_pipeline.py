@@ -4,6 +4,7 @@ import argparse
 import ast
 import html
 import hashlib
+from io import StringIO
 import json
 import math
 import os
@@ -131,7 +132,12 @@ def report_debug_event(hypothesis_id: str, location: str, msg: str, data: dict |
     # #endregion
 
 
-def ensure_date_sorted(df: pd.DataFrame) -> pd.DataFrame:
+def ensure_date_sorted(
+    df: pd.DataFrame,
+    *,
+    years: int | None = LOOKBACK_YEARS,
+    start_date: str | pd.Timestamp | None = None,
+) -> pd.DataFrame:
     result = df.copy()
     result["date"] = pd.to_datetime(result["date"]).dt.date
     numeric_columns = [col for col in result.columns if col != "date"]
@@ -139,8 +145,13 @@ def ensure_date_sorted(df: pd.DataFrame) -> pd.DataFrame:
         result[column] = pd.to_numeric(result[column], errors="coerce")
     result = result.dropna(subset=numeric_columns, how="all")
     result = result.sort_values("date").reset_index(drop=True)
-    cutoff = pd.Timestamp.today().normalize() - pd.DateOffset(years=LOOKBACK_YEARS)
-    result = result[pd.to_datetime(result["date"]) >= cutoff].reset_index(drop=True)
+    cutoff = None
+    if start_date is not None:
+        cutoff = pd.Timestamp(start_date).normalize()
+    elif years is not None:
+        cutoff = pd.Timestamp.today().normalize() - pd.DateOffset(years=years)
+    if cutoff is not None:
+        result = result[pd.to_datetime(result["date"]) >= cutoff].reset_index(drop=True)
     return result
 
 
@@ -170,6 +181,79 @@ def fetch_fred_series(series_id: str, column_name: str = "value") -> pd.DataFram
         report_debug_event("A", "fetch_fred_series", "fred fetch failed", {"series_id": series_id, "error_type": type(exc).__name__, "error": str(exc)})
         raise
     # #endregion
+
+
+def fetch_fred_series_full_history(
+    series_id: str,
+    column_name: str = "value",
+    *,
+    start_date: str | pd.Timestamp | None = None,
+) -> pd.DataFrame:
+    api_key = load_fred_api_key()
+    if api_key:
+        params = {
+            "series_id": series_id,
+            "api_key": api_key,
+            "file_type": "json",
+        }
+        if start_date is not None:
+            params["observation_start"] = pd.Timestamp(start_date).strftime("%Y-%m-%d")
+
+        api_response = None
+        api_last_error: Exception | None = None
+        for _ in range(3):
+            try:
+                api_response = requests.get(
+                    FRED_OBSERVATIONS_URL,
+                    params=params,
+                    timeout=max(TIMEOUT, 30),
+                    headers={"User-Agent": "Mozilla/5.0", "Accept": "application/json"},
+                )
+                api_response.raise_for_status()
+                payload = api_response.json()
+                observations = payload.get("observations")
+                if observations is None:
+                    raise ValueError(f"FRED API missing observations for {series_id}")
+                rows = [
+                    {"date": item["date"], column_name: float(item["value"])}
+                    for item in observations
+                    if item.get("value") not in {None, "."}
+                ]
+                if rows:
+                    return ensure_date_sorted(pd.DataFrame(rows), years=None, start_date=start_date)
+            except Exception as exc:  # noqa: PERF203
+                api_last_error = exc
+        report_debug_event(
+            "A",
+            "fetch_fred_series_full_history",
+            "fred full-history api fallback to csv",
+            {"series_id": series_id, "error_type": type(api_last_error).__name__ if api_last_error else "", "error": str(api_last_error) if api_last_error else ""},
+        )
+
+    url = fred_csv_url(series_id)
+    response = None
+    last_error: Exception | None = None
+    for _ in range(3):
+        try:
+            response = requests.get(
+                url,
+                timeout=max(TIMEOUT, 30),
+                headers={"User-Agent": "Mozilla/5.0", "Accept": "text/csv,*/*"},
+            )
+            response.raise_for_status()
+            break
+        except Exception as exc:  # noqa: PERF203
+            last_error = exc
+    if response is None:
+        raise ValueError(f"FRED full-history fetch failed for {series_id}: {last_error}")
+    df = pd.read_csv(pd.io.common.StringIO(response.text))
+    columns = {column.upper(): column for column in df.columns}
+    date_column = columns.get("DATE") or columns.get("OBSERVATION_DATE")
+    value_column = columns.get(series_id.upper())
+    if not date_column or not value_column:
+        raise ValueError(f"Failed to parse FRED series: {series_id}")
+    df = df.rename(columns={date_column: "date", value_column: column_name})
+    return ensure_date_sorted(df[["date", column_name]], years=None, start_date=start_date)
 
 
 def fetch_fred_yoy(series_id: str, column_name: str) -> pd.DataFrame:
@@ -629,6 +713,26 @@ def fetch_move() -> pd.DataFrame:
 
 
 def fetch_dxy_reference() -> pd.DataFrame:
+    try:
+        return fetch_dxy_fred_proxy()
+    except Exception as exc:  # noqa: PERF203
+        report_debug_event(
+            "A",
+            "fetch_dxy_reference",
+            "fred proxy dxy fallback",
+            {"error_type": type(exc).__name__, "error": str(exc)},
+        )
+
+    try:
+        return fetch_dxy_stooq()
+    except Exception as exc:  # noqa: PERF203
+        report_debug_event(
+            "A",
+            "fetch_dxy_reference",
+            "stooq dxy fallback",
+            {"error_type": type(exc).__name__, "error": str(exc)},
+        )
+
     last_error: Exception | None = None
     for ticker in ["DX-Y.NYB", "DX=F"]:
         try:
@@ -646,6 +750,110 @@ def fetch_dxy_reference() -> pd.DataFrame:
     if cached_csv.exists():
         return rename_single_value_column(fetch_existing_csv(cached_csv), "dxy")
     raise ValueError(f"DXY fetch failed: {last_error}")
+
+
+def fetch_dxy_fred_proxy() -> pd.DataFrame:
+    start_date = pd.Timestamp("2000-01-01")
+    anchor = fetch_fred_series_full_history("DTWEXM", "dxy", start_date=start_date)
+    last_anchor_date = pd.to_datetime(anchor["date"]).max()
+
+    extension_error: Exception | None = None
+    for series_id in ["DTWEXAFEGS", "DTWEXBGS"]:
+        try:
+            extension = fetch_fred_series_full_history(series_id, "dxy", start_date=start_date)
+            overlap = pd.merge(anchor, extension, on="date", how="inner", suffixes=("_anchor", "_extension"))
+            overlap = overlap.dropna(subset=["dxy_anchor", "dxy_extension"])
+            if overlap.empty:
+                raise ValueError(f"No overlap between DTWEXM and {series_id}")
+
+            scale_ratio = (overlap["dxy_anchor"] / overlap["dxy_extension"]).median()
+            extension = extension.copy()
+            extension["dxy"] = extension["dxy"] * scale_ratio
+            stitched = pd.concat(
+                [
+                    anchor,
+                    extension[pd.to_datetime(extension["date"]) > last_anchor_date],
+                ],
+                ignore_index=True,
+            )
+            stitched = ensure_date_sorted(stitched, years=None, start_date=start_date)
+            if stitched.empty:
+                raise ValueError(f"Stitched FRED DXY proxy is empty for {series_id}")
+            return stitched
+        except Exception as exc:  # noqa: PERF203
+            extension_error = exc
+
+    raise ValueError(f"FRED DXY proxy stitch failed: {extension_error}")
+
+
+def fetch_dxy_stooq() -> pd.DataFrame:
+    base_url = "https://stooq.com/q/d/"
+    start_date = pd.Timestamp("2000-01-01")
+    frames: list[pd.DataFrame] = []
+    page = 1
+    consecutive_failures = 0
+
+    while True:
+        page_url = f"{base_url}?s=usd_i&i=d&l={page}"
+        page_response = None
+        last_error: Exception | None = None
+        for _ in range(3):
+            try:
+                page_response = requests.get(page_url, timeout=max(TIMEOUT, 30), headers={"User-Agent": "Mozilla/5.0"})
+                page_response.raise_for_status()
+                break
+            except Exception as exc:  # noqa: PERF203
+                last_error = exc
+        if page_response is None:
+            consecutive_failures += 1
+            if consecutive_failures >= 2:
+                raise ValueError(f"Stooq DXY page fetch failed near page {page}: {last_error}")
+            page += 1
+            continue
+
+        try:
+            tables = pd.read_html(StringIO(page_response.text))
+        except Exception as exc:  # noqa: PERF203
+            consecutive_failures += 1
+            if consecutive_failures >= 2:
+                raise ValueError(f"Stooq DXY page parse failed near page {page}: {exc}")
+            page += 1
+            continue
+
+        history_table = None
+        for table in tables:
+            columns = [str(column) for column in table.columns]
+            if {"No.", "Date", "Close"}.issubset(set(columns)):
+                history_table = table
+                break
+        if history_table is None:
+            consecutive_failures += 1
+            if consecutive_failures >= 2:
+                break
+            page += 1
+            continue
+
+        consecutive_failures = 0
+        frame = history_table[["Date", "Close"]].copy()
+        frame.columns = ["date", "dxy"]
+        frame["date"] = pd.to_datetime(frame["date"], format="%d %b %Y", errors="coerce")
+        frame["dxy"] = pd.to_numeric(frame["dxy"], errors="coerce")
+        frame = frame.dropna()
+        if not frame.empty:
+            frames.append(frame)
+            if frame["date"].min() <= start_date:
+                break
+        page += 1
+
+    if not frames:
+        raise ValueError("No DXY history parsed from Stooq")
+
+    merged = pd.concat(frames, ignore_index=True).drop_duplicates(subset=["date"], keep="first")
+    merged = ensure_date_sorted(merged)
+    merged = merged[merged["date"] >= start_date].reset_index(drop=True)
+    if merged.empty:
+        raise ValueError("Stooq DXY history does not cover requested period")
+    return merged
 
 
 def fetch_dxy() -> pd.DataFrame:
@@ -901,7 +1109,7 @@ def build_registry() -> dict[str, IndicatorConfig]:
         "VIX（波动率指数）": IndicatorConfig("vix", fetch_vix_from_github, "GitHub datasets/finance-vix", core=True),
         "信用利差（IG / HY spread）": IndicatorConfig("credit_spreads", fetch_credit_spreads, "FRED", core=True),
         "MOVE 指数": IndicatorConfig("move_index", fetch_move, "Yahoo Finance"),
-        "美元指数（DXY）": IndicatorConfig("dxy", fetch_dxy, "Yahoo Finance", note="Uses `DX-Y.NYB` price history and falls back to cached indicator CSV when yfinance is rate limited.", core=True),
+        "美元指数（DXY）": IndicatorConfig("dxy", fetch_dxy, "FRED stitched proxy", note="Uses stitched FRED dollar-index proxy history (`DTWEXM` plus newer Fed dollar-index series) to cover 2000-present, then falls back to Stooq, Yahoo Finance, and cached CSV.", core=True),
         "芝加哥联储 NFCI": IndicatorConfig("nfci", lambda: fetch_fred_series("NFCI", "nfci"), "FRED", core=True),
         "OFR 金融压力指数": IndicatorConfig("ofr_financial_stress", None, "Manual", note="Official feed not wired yet."),
         "美股基金资金流（ICI / EPFR）": IndicatorConfig("equity_fund_flows", None, "Manual", note="EPFR/ICI feed not wired."),

@@ -595,7 +595,8 @@ def render_dashboard() -> str:
   <title>市场指标监控面板</title>
   <style>
     * {{ box-sizing: border-box; }}
-    body {{ margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; background: #f3f6fb; color: #0f172a; }}
+    html {{ scroll-behavior: smooth; }}
+    body {{ margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; background: #f3f6fb; color: #0f172a; overflow-x: hidden; }}
     a {{ color: inherit; text-decoration: none; }}
     .layout {{ display: flex; min-height: 100vh; }}
     .sidebar {{ width: 230px; background: linear-gradient(180deg, #08152f 0%, #0e2349 100%); color: #dbeafe; padding: 22px 18px; position: sticky; top: 0; height: 100vh; overflow: auto; }}
@@ -604,9 +605,10 @@ def render_dashboard() -> str:
     .brand-title {{ font-size: 16px; font-weight: 700; }}
     .brand-sub {{ font-size: 12px; color: #93c5fd; margin-top: 2px; }}
     .nav {{ display: flex; flex-direction: column; gap: 8px; }}
-    .nav a {{ padding: 10px 12px; border-radius: 12px; color: #dbeafe; font-size: 14px; }}
+    .nav a {{ padding: 10px 12px; border-radius: 12px; color: #dbeafe; font-size: 14px; white-space: nowrap; }}
     .nav a:hover {{ background: rgba(255,255,255,0.08); }}
     .main {{ flex: 1; padding: 26px; }}
+    .section, .category-section {{ scroll-margin-top: 84px; }}
     .hero {{ background: linear-gradient(135deg, #ffffff 0%, #eef4ff 100%); border: 1px solid #dbe4f0; border-radius: 24px; padding: 24px; box-shadow: 0 12px 32px rgba(15, 23, 42, 0.06); }}
     .hero-top {{ display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; margin-bottom: 20px; }}
     .hero-title {{ font-size: 30px; font-weight: 800; margin: 0; }}
@@ -711,6 +713,7 @@ def render_dashboard() -> str:
     .chart-select-card.selected {{ border-color: #2563eb; box-shadow: 0 14px 32px rgba(37, 99, 235, 0.16); }}
     .chart-select-card.selected::after {{ content: "已选中"; position: absolute; top: 12px; right: 12px; background: #2563eb; color: #fff; font-size: 11px; font-weight: 700; border-radius: 999px; padding: 4px 8px; }}
     @media (max-width: 1280px) {{
+      .hero-title {{ font-size: 28px; }}
       .signal-grid {{ grid-template-columns: repeat(4, minmax(0, 1fr)); }}
       .market-grid {{ grid-template-columns: repeat(2, minmax(0, 1fr)); }}
       .valuation-grid {{ grid-template-columns: repeat(2, minmax(0, 1fr)); }}
@@ -718,7 +721,28 @@ def render_dashboard() -> str:
     }}
     @media (max-width: 960px) {{
       .layout {{ display: block; }}
-      .sidebar {{ width: auto; height: auto; position: static; }}
+      .sidebar {{ width: auto; height: auto; position: sticky; top: 0; z-index: 30; padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.08); }}
+      .brand {{ margin-bottom: 12px; }}
+      .brand-logo {{ width: 36px; height: 36px; border-radius: 10px; }}
+      .nav {{ flex-direction: row; gap: 10px; overflow-x: auto; padding-bottom: 4px; scrollbar-width: none; }}
+      .nav::-webkit-scrollbar {{ display: none; }}
+      .nav a {{ display: inline-flex; align-items: center; min-height: 40px; background: rgba(255,255,255,0.08); }}
+      .main {{ padding: 18px; }}
+      .hero {{ border-radius: 20px; }}
+      .hero-top {{ flex-direction: column; align-items: stretch; }}
+      .hero-side {{ align-items: stretch; }}
+      .refresh-btn {{ width: 100%; min-height: 44px; }}
+      .refresh-status {{ text-align: left; }}
+      .hero-tags {{ overflow-x: auto; flex-wrap: nowrap; padding-bottom: 2px; }}
+      .hero-tags span {{ white-space: nowrap; }}
+      .compare-toolbar {{ flex-direction: column; }}
+      .compare-actions {{ width: 100%; justify-content: space-between; }}
+      .compare-chart {{ height: 340px; }}
+      .category-head {{ align-items: flex-start; flex-direction: column; }}
+      .category-title-wrap {{ align-items: flex-start; }}
+      .category-stat {{ font-size: 24px; }}
+      .indicator-header {{ flex-direction: column; }}
+      .indicator-right {{ text-align: left; min-width: 0; }}
       .signal-grid {{ grid-template-columns: repeat(2, minmax(0, 1fr)); }}
       .indicator-grid {{ grid-template-columns: 1fr; }}
       .market-grid {{ grid-template-columns: 1fr; }}
@@ -726,11 +750,30 @@ def render_dashboard() -> str:
       .commodity-grid {{ grid-template-columns: 1fr; }}
     }}
     @media (max-width: 640px) {{
-      .main {{ padding: 16px; }}
-      .hero {{ padding: 18px; }}
-      .hero-top {{ display: block; }}
+      .main {{ padding: 14px; }}
+      .sidebar {{ padding: 12px 14px; }}
+      .brand-title {{ font-size: 15px; }}
+      .brand-sub {{ font-size: 11px; }}
+      .hero {{ padding: 16px; border-radius: 18px; }}
+      .hero-title {{ font-size: 24px; line-height: 1.25; }}
+      .hero-desc, .compare-subtitle {{ font-size: 13px; }}
+      .section {{ margin-top: 18px; }}
+      .section-title, .compare-title, .category-title-wrap h2, .category-highlight h3 {{ font-size: 20px; }}
+      .market-card, .commodity-card, .valuation-card, .indicator-card, .compare-panel, .category-section {{ padding: 14px; border-radius: 16px; }}
+      .market-card-top, .commodity-top, .valuation-top {{ flex-direction: column; }}
+      .market-desc {{ max-width: none; text-align: left; }}
+      .market-value, .commodity-value, .valuation-value, .indicator-value, .signal-value {{ font-size: 22px; }}
+      .chart-sm {{ height: 180px; }}
+      .chart-md {{ height: 220px; }}
+      .chart-lg {{ height: 260px; }}
+      .compare-chart {{ height: 300px; }}
+      .compare-actions {{ flex-direction: column; align-items: stretch; }}
+      .compare-btn {{ min-height: 42px; }}
       .signal-grid {{ grid-template-columns: 1fr; }}
       .indicator-detail-grid {{ grid-template-columns: 1fr; }}
+      .valuation-metrics {{ grid-template-columns: 1fr; }}
+      .highlight-meta {{ gap: 8px; }}
+      .chart-select-card.selected::after {{ top: 10px; right: 10px; }}
     }}
   </style>
 </head>
@@ -821,6 +864,8 @@ def render_dashboard() -> str:
   <script>
     const chartInstances = {chart_instances_json};
     const chartMetaMap = new Map(chartInstances.map((item) => [item.id, item]));
+    const isCompactScreen = () => window.innerWidth <= 640;
+    const isTabletScreen = () => window.innerWidth <= 960;
 
     function renderCharts() {{
       const renderedCharts = [];
@@ -842,26 +887,33 @@ def render_dashboard() -> str:
           return idx <= 0 ? 0 : (idx / Math.max(allDates.length - 1, 1)) * 100;
         }})();
 
+        const compact = isCompactScreen();
+        const tablet = isTabletScreen();
         const option = {{
           animation: false,
           tooltip: {{ trigger: "axis" }},
           legend: {{
-            show: item.series.length > 1,
+            show: item.series.length > 1 && !compact,
             top: 2,
             right: 6,
-            textStyle: {{ fontSize: 11 }},
+            textStyle: {{ fontSize: compact ? 10 : 11 }},
           }},
-          grid: {{ top: item.series.length > 1 ? 30 : 18, left: 48, right: 18, bottom: 48 }},
+          grid: {{
+            top: item.series.length > 1 && !compact ? 30 : 18,
+            left: compact ? 40 : 48,
+            right: compact ? 10 : 18,
+            bottom: compact ? 42 : 48,
+          }},
           xAxis: {{
             type: "category",
             boundaryGap: false,
-            axisLabel: {{ color: "#64748b", fontSize: 11 }},
+            axisLabel: {{ color: "#64748b", fontSize: compact ? 10 : 11, hideOverlap: true }},
             data: allDates,
           }},
           yAxis: {{
             type: "value",
             scale: true,
-            axisLabel: {{ color: "#64748b", fontSize: 11 }},
+            axisLabel: {{ color: "#64748b", fontSize: compact ? 10 : 11 }},
             splitLine: {{ lineStyle: {{ color: "#e2e8f0" }} }},
           }},
           dataZoom: [
@@ -877,8 +929,9 @@ def render_dashboard() -> str:
               type: "slider",
               start: defaultStartDate,
               end: 100,
-              height: 18,
-              bottom: 8,
+              height: compact ? 14 : 18,
+              bottom: compact ? 6 : 8,
+              showDetail: !tablet,
             }},
           ],
           series: item.series.map((s, index) => ({{
@@ -914,13 +967,14 @@ def render_dashboard() -> str:
       const series = [];
       let leftAxisCount = 0;
       let rightAxisCount = 0;
+      const compact = isCompactScreen();
 
       selectedItems.forEach((item, index) => {{
         const firstSeries = item.series[0];
         if (!firstSeries) return;
         const color = colorPalette[index % colorPalette.length];
         const side = index % 2 === 0 ? "left" : "right";
-        const offset = side === "left" ? leftAxisCount * 56 : rightAxisCount * 56;
+        const offset = side === "left" ? leftAxisCount * (compact ? 34 : 56) : rightAxisCount * (compact ? 34 : 56);
         if (side === "left") {{
           leftAxisCount += 1;
         }} else {{
@@ -929,10 +983,10 @@ def render_dashboard() -> str:
         const valueMap = new Map(firstSeries.x.map((xValue, idx) => [xValue, firstSeries.y[idx]]));
         yAxes.push({{
           type: "value",
-          name: item.title || firstSeries.name,
+          name: compact ? "" : (item.title || firstSeries.name),
           nameTextStyle: {{ color }},
           axisLine: {{ show: true, lineStyle: {{ color }} }},
-          axisLabel: {{ color, fontSize: 11 }},
+          axisLabel: {{ color, fontSize: compact ? 10 : 11 }},
           splitLine: {{ show: index === 0, lineStyle: {{ color: "#e2e8f0" }} }},
           position: side,
           offset,
@@ -951,25 +1005,25 @@ def render_dashboard() -> str:
         }});
       }});
 
-      const gridLeft = 70 + Math.max(0, leftAxisCount - 1) * 56;
-      const gridRight = 70 + Math.max(0, rightAxisCount - 1) * 56;
+      const gridLeft = (compact ? 48 : 70) + Math.max(0, leftAxisCount - 1) * (compact ? 34 : 56);
+      const gridRight = (compact ? 48 : 70) + Math.max(0, rightAxisCount - 1) * (compact ? 34 : 56);
 
       return {{
         animation: false,
         color: colorPalette,
         tooltip: {{ trigger: "axis" }},
-        legend: {{ top: 6 }},
-        grid: {{ top: 54, left: gridLeft, right: gridRight, bottom: 60 }},
+        legend: {{ top: 6, textStyle: {{ fontSize: compact ? 10 : 11 }} }},
+        grid: {{ top: compact ? 44 : 54, left: gridLeft, right: gridRight, bottom: compact ? 48 : 60 }},
         xAxis: {{
           type: "category",
           boundaryGap: false,
           data: dates,
-          axisLabel: {{ color: "#64748b", fontSize: 11 }},
+          axisLabel: {{ color: "#64748b", fontSize: compact ? 10 : 11, hideOverlap: true }},
         }},
         yAxis: yAxes,
         dataZoom: [
           {{ type: "inside", start: 0, end: 100 }},
-          {{ type: "slider", start: 0, end: 100, height: 18, bottom: 10 }},
+          {{ type: "slider", start: 0, end: 100, height: compact ? 14 : 18, bottom: compact ? 8 : 10, showDetail: !compact }},
         ],
         series,
       }};

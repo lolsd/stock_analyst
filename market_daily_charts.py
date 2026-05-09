@@ -36,10 +36,12 @@ import pandas as pd
 import requests
 from akshare.stock_feature import stock_a_pe_and_pb as lg
 from py_mini_racer import MiniRacer
+import yfinance as yf
 
 
 LOOKBACK_YEARS = 3
 PE_HISTORY_START = pd.Timestamp("2000-01-01")
+MARKET_HISTORY_START = pd.Timestamp("2000-01-01")
 BASE_DIR = Path(__file__).resolve().parent
 OUTPUT_DIR = BASE_DIR / "output"
 
@@ -71,25 +73,61 @@ def trim_lookback(df: pd.DataFrame) -> pd.DataFrame:
     return df[pd.to_datetime(df["date"]) >= cutoff].reset_index(drop=True)
 
 
+def trim_since(df: pd.DataFrame, start: pd.Timestamp = MARKET_HISTORY_START) -> pd.DataFrame:
+    return df[pd.to_datetime(df["date"]) >= start.normalize()].reset_index(drop=True)
+
+
+def fetch_yfinance_series(ticker: str) -> pd.DataFrame:
+    history = yf.Ticker(ticker).history(start=MARKET_HISTORY_START.strftime("%Y-%m-%d"), auto_adjust=False)
+    if history.empty:
+        raise ValueError(f"未获取到 {ticker} 的长历史数据")
+    df = history[["Close"]].copy().reset_index()
+    date_column = "Date" if "Date" in df.columns else df.columns[0]
+    df = df.rename(columns={date_column: "date", "Close": "value"})
+    df["date"] = pd.to_datetime(df["date"]).dt.date
+    df["value"] = pd.to_numeric(df["value"], errors="coerce")
+    return df.dropna().reset_index(drop=True)
+
+
 def fetch_us_index_series(symbol: str) -> pd.DataFrame:
-    # 美股指数改走新浪指数接口，避免 yfinance 频繁限流。
+    yahoo_map = {
+        ".IXIC": "^IXIC",
+        ".INX": "^GSPC",
+    }
+    ticker = yahoo_map.get(symbol)
+    if ticker is not None:
+        try:
+            return trim_since(fetch_yfinance_series(ticker))
+        except Exception:
+            pass
+
     raw_df = ak.index_us_stock_sina(symbol=symbol)
     df = normalize_close_frame(raw_df, "date", "close")
-    return trim_lookback(df)
+    return trim_since(df)
 
 
 def fetch_foreign_futures_series(symbol: str) -> pd.DataFrame:
-    # 黄金、原油等海外商品使用新浪外盘期货历史收盘价。
+    yahoo_map = {
+        "GC": "GC=F",
+        "CL": "CL=F",
+    }
+    ticker = yahoo_map.get(symbol)
+    if ticker is not None:
+        try:
+            return trim_since(fetch_yfinance_series(ticker))
+        except Exception:
+            pass
+
     raw_df = ak.futures_foreign_hist(symbol=symbol)
     df = normalize_close_frame(raw_df, "date", "close")
-    return trim_lookback(df)
+    return trim_since(df)
 
 
 def fetch_cn_index_series(symbol: str) -> pd.DataFrame:
     # A 股指数使用新浪指数历史数据，当前用于沪深300。
     raw_df = ak.stock_zh_index_daily(symbol=symbol)
     df = normalize_close_frame(raw_df, "date", "close")
-    return trim_lookback(df)
+    return trim_since(df)
 
 
 def normalize_value_frame(raw_df: pd.DataFrame, date_col: str, value_col: str) -> pd.DataFrame:

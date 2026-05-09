@@ -29,10 +29,12 @@ import akshare as ak
 import matplotlib.pyplot as plt
 import pandas as pd
 import requests
+import yfinance as yf
 from bs4 import BeautifulSoup
 
 
 LOOKBACK_YEARS = 3
+HISTORY_START = pd.Timestamp("2000-01-01")
 BASE_DIR = Path(__file__).resolve().parent
 OUTPUT_DIR = BASE_DIR / "output" / "commodity_macro"
 
@@ -54,6 +56,11 @@ def trim_lookback(df: pd.DataFrame, years: int = LOOKBACK_YEARS) -> pd.DataFrame
     return filtered.sort_values("date").dropna().reset_index(drop=True)
 
 
+def trim_since(df: pd.DataFrame, start: pd.Timestamp = HISTORY_START) -> pd.DataFrame:
+    filtered = df[pd.to_datetime(df["date"]) >= start.normalize()]
+    return filtered.sort_values("date").dropna().reset_index(drop=True)
+
+
 def normalize_series(df: pd.DataFrame) -> pd.DataFrame:
     result = df.copy()
     first_value = result["value"].iloc[0]
@@ -70,8 +77,30 @@ def to_standard_frame(df: pd.DataFrame, date_col: str, value_col: str) -> pd.Dat
 
 
 def fetch_foreign_futures(symbol: str) -> pd.DataFrame:
+    yahoo_map = {
+        "CL": "CL=F",
+        "GC": "GC=F",
+        "SI": "SI=F",
+        "HG": "HG=F",
+        "S": "ZS=F",
+        "C": "ZC=F",
+    }
+    ticker = yahoo_map.get(symbol)
+    if ticker is not None:
+        try:
+            history = yf.Ticker(ticker).history(start=HISTORY_START.strftime("%Y-%m-%d"), auto_adjust=False)
+            if not history.empty:
+                data = history[["Close"]].copy().reset_index()
+                date_column = "Date" if "Date" in data.columns else data.columns[0]
+                data = data.rename(columns={date_column: "date", "Close": "value"})
+                data["date"] = pd.to_datetime(data["date"]).dt.date
+                data["value"] = pd.to_numeric(data["value"], errors="coerce")
+                return trim_since(data[["date", "value"]])
+        except Exception:
+            pass
+
     raw_df = ak.futures_foreign_hist(symbol=symbol)
-    return trim_lookback(to_standard_frame(raw_df, "date", "close"))
+    return trim_since(to_standard_frame(raw_df, "date", "close"))
 
 
 def fetch_domestic_futures(symbol: str) -> pd.DataFrame:

@@ -19,7 +19,7 @@
   "status": "fetched",
   "proxy": false,
   "note": "",
-  "data_path": "/root/stock_analyst/stock_analyst/output/us_stock_indicators/03_growth_fundamentals/ism_manufacturing_pmi/data.csv",
-  "chart_path": "/root/stock_analyst/stock_analyst/output/us_stock_indicators/03_growth_fundamentals/ism_manufacturing_pmi/chart.png",
+  "data_path": "/Users/bytedance/Documents/trae_projects/american/output/us_stock_indicators/03_growth_fundamentals/ism_manufacturing_pmi/data.csv",
+  "chart_path": "/Users/bytedance/Documents/trae_projects/american/output/us_stock_indicators/03_growth_fundamentals/ism_manufacturing_pmi/chart.png",
   "error": ""
 }

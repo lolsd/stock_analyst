@@ -632,13 +632,14 @@ def fetch_dxy_reference() -> pd.DataFrame:
     last_error: Exception | None = None
     for ticker in ["DX-Y.NYB", "DX=F"]:
         try:
-            history = yf.Ticker(ticker).history(period=f"{LOOKBACK_YEARS}y")
+            history = yf.Ticker(ticker).history(start="2000-01-01", auto_adjust=False)
             if history.empty:
                 raise ValueError(f"No price data returned for {ticker}")
             df = history[["Close"]].copy().reset_index()
             date_column = "Date" if "Date" in df.columns else df.columns[0]
             df = df.rename(columns={date_column: "date", "Close": "dxy"})
-            return ensure_date_sorted(df[["date", "dxy"]])
+            normalized = ensure_date_sorted(df[["date", "dxy"]])
+            return normalized[normalized["date"] >= pd.Timestamp("2000-01-01")].reset_index(drop=True)
         except Exception as exc:  # noqa: PERF203
             last_error = exc
     cached_csv = OUTPUT_DIR / "05_risk_stress" / "dxy" / "data.csv"

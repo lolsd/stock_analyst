@@ -19,7 +19,7 @@
   "status": "fetched",
   "proxy": false,
   "note": "Uses `output/commodity_macro` cached futures CSVs when available, otherwise fetches via AKShare futures history.",
-  "data_path": "/root/stock_analyst/stock_analyst/output/us_stock_indicators/02_inflation/commodity_basket/data.csv",
-  "chart_path": "/root/stock_analyst/stock_analyst/output/us_stock_indicators/02_inflation/commodity_basket/chart.png",
+  "data_path": "/Users/bytedance/Documents/trae_projects/american/output/us_stock_indicators/02_inflation/commodity_basket/data.csv",
+  "chart_path": "/Users/bytedance/Documents/trae_projects/american/output/us_stock_indicators/02_inflation/commodity_basket/chart.png",
   "error": ""
 }

@@ -19,7 +19,7 @@
   "status": "fetched",
   "proxy": true,
   "note": "Uses TTM PE public proxy because NTM consensus requires commercial data.",
-  "data_path": "/root/stock_analyst/stock_analyst/output/us_stock_indicators/04_earnings_valuation/sp500_forward_pe_proxy/data.csv",
-  "chart_path": "/root/stock_analyst/stock_analyst/output/us_stock_indicators/04_earnings_valuation/sp500_forward_pe_proxy/chart.png",
+  "data_path": "/Users/bytedance/Documents/trae_projects/american/output/us_stock_indicators/04_earnings_valuation/sp500_forward_pe_proxy/data.csv",
+  "chart_path": "/Users/bytedance/Documents/trae_projects/american/output/us_stock_indicators/04_earnings_valuation/sp500_forward_pe_proxy/chart.png",
   "error": ""
 }
